@@ -460,7 +460,7 @@
             
               
 <div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
+  <a class='author' href="/" rel="nofollow">
     <img no-lazy src="">
     <p>请设置文章作者</p>
   </a>
@@ -579,7 +579,7 @@
             
               
 <div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
+  <a class='author' href="/" rel="nofollow">
     <img no-lazy src="">
     <p>请设置文章作者</p>
   </a>
@@ -1167,6 +1167,7 @@
   function pjax_fancybox() {
     $(".article-entry").find("img").not('.inline').not('a img').each(function () { //渲染 fancybox
       var element = document.createElement("a"); // a 标签
+      $(element).attr("class", "fancybox");
       $(element).attr("pjax-fancybox", "");  // 过滤 pjax
       $(element).attr("href", $(this).attr("src"));
       if ($(this).attr("data-original")) {
