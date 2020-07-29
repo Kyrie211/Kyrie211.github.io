@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Krismile">
   <meta name="keywords" content="">
-  <title>友链 - YouBolg</title>
+  <title>友链 - YouBlog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -186,12 +186,63 @@
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="/img/favicon.png" srcset="/img/loading.gif" alt="Fluid Docs" />
+              <img src="/img/github.png" srcset="/img/loading.gif" alt="GitHub" />
             </div>
           
           <div class="link-text">
-            <div class="link-title">Fluid Docs</div>
-            <div class="link-intro">主题使用指南</div>
+            <div class="link-title">GitHub</div>
+            <div class="link-intro">我的GitHub</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+    
+    <div class="card col-lg-4 col-md-6 col-sm-12">
+      <a href="https://www.cnblogs.com/Krisone/" class="card-body hover-with-bg" target="_blank" rel="noopener">
+        <div class="card-content">
+          
+            <div class="link-avatar my-auto">
+              <img src="/img/cnblogs.png" srcset="/img/loading.gif" alt="博客园" />
+            </div>
+          
+          <div class="link-text">
+            <div class="link-title">博客园</div>
+            <div class="link-intro">我的博客园</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+    
+    <div class="card col-lg-4 col-md-6 col-sm-12">
+      <a href="https://leetcode-cn.com/u/ksmile/" class="card-body hover-with-bg" target="_blank" rel="noopener">
+        <div class="card-content">
+          
+            <div class="link-avatar my-auto">
+              <img src="/img/leetcode.png" srcset="/img/loading.gif" alt="LeetCode" />
+            </div>
+          
+          <div class="link-text">
+            <div class="link-title">LeetCode</div>
+            <div class="link-intro">我的LeetCode</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  
+    
+    <div class="card col-lg-4 col-md-6 col-sm-12">
+      <a href="https://www.nowcoder.com/212548613" class="card-body hover-with-bg" target="_blank" rel="noopener">
+        <div class="card-content">
+          
+            <div class="link-avatar my-auto">
+              <img src="/img/bull.png" srcset="/img/loading.gif" alt="牛客网" />
+            </div>
+          
+          <div class="link-text">
+            <div class="link-title">牛客网</div>
+            <div class="link-intro">我的牛客网</div>
           </div>
         </div>
       </a>
@@ -203,7 +254,7 @@
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="/img/favicon.png" srcset="/img/loading.gif" alt="Fluid Repo" />
+              <img src="/img/repo.png" srcset="/img/loading.gif" alt="Fluid Repo" />
             </div>
           
           <div class="link-text">
@@ -220,7 +271,7 @@
         <div class="card-content">
           
             <div class="link-avatar my-auto">
-              <img src="/img/favicon.png" srcset="/img/loading.gif" alt="Fluid Example" />
+              <img src="/img/example.png" srcset="/img/loading.gif" alt="Fluid Example" />
             </div>
           
           <div class="link-text">
@@ -270,6 +321,29 @@
   </div>
 </div>
   
+
+  
+    <!-- APlayer 音乐播放器 -->
+    <div id="aplayer"></div>
+    <script defer src="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.js" ></script>
+<link  rel="stylesheet" href="https://cdn.staticfile.org/aplayer/1.10.1/APlayer.min.css" />
+<script type="text/javascript">
+  var oldLoadAp = window.onload;
+  window.onload = function () {
+    oldLoadAp && oldLoadAp();
+
+    new APlayer({
+      container: document.getElementById('aplayer'),
+      fixed: true,
+      autoplay: 'false' === 'true',
+      loop: 'all',
+      order: 'random',
+      theme: '#b7daff',
+      preload: 'none',
+      audio: [{"name":"name","artist":"artist","url":"/songs/test.mp3","cover":"/img/cover.jpg"},{"name":"name","artist":"artist","url":"https://...url.mp3","cover":"https://...cover.jpg"}]
+    });
+  }
+</script>
 
   
 
