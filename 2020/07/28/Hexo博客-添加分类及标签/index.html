@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      347 字
+      355 字
     </span>
   
 
@@ -228,47 +228,69 @@
             <h1 style="display: none">Hexo如何添加分类和标签</h1>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="1-文章分类"><a href="#1-文章分类" class="headerlink" title="1. 文章分类"></a>1. 文章分类</h1><h2 id="1-1-生成分类目录"><a href="#1-1-生成分类目录" class="headerlink" title="1.1 生成分类目录"></a>1.1 生成分类目录</h2><p>(<code>)
-hexo new page categories
-(</code>)</p>
+              <h1 id="1-文章分类"><a href="#1-文章分类" class="headerlink" title="1. 文章分类"></a>1. 文章分类</h1><h2 id="1-1-生成分类目录"><a href="#1-1-生成分类目录" class="headerlink" title="1.1 生成分类目录"></a>1.1 生成分类目录</h2><pre><code class="hljs routeros">hexo new<span class="hljs-built_in"> page </span>categories</code></pre>
+
 <p>生成目录之后，会在根目录的source目录中多出一个categories目录。</p>
 <h2 id="1-2-分类配置"><a href="#1-2-分类配置" class="headerlink" title="1.2 分类配置"></a>1.2 分类配置</h2><p>在categories目录中有一个index.md文件，在文件中添加type: categories</p>
-<h2 id=""><a href="#" class="headerlink" title="(```)"></a>(```)</h2><p>title: 分类<br>date: 2020-02-10 14:47:40<br>type: categories</p>
-<hr>
-<p>(```)</p>
+<pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">分类</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">categories</span>
+<span class="hljs-meta">---</span></code></pre>
+
 <h2 id="1-3-增加多个分类"><a href="#1-3-增加多个分类" class="headerlink" title="1.3 增加多个分类"></a>1.3 增加多个分类</h2><p>在categories目录中有一个index.md文件，复制多份就可以了</p>
-<h2 id="-1"><a href="#-1" class="headerlink" title="(```)"></a>(```)</h2><p>title: 分类一<br>date: 2020-02-10 14:47:40<br>type: categories</p>
-<hr>
-<hr>
-<p>title: 分类二<br>date: 2020-02-10 14:47:40<br>type: categories</p>
-<hr>
-<p>(```)</p>
-<h2 id="1-4-给文章添加”分类”属性"><a href="#1-4-给文章添加”分类”属性" class="headerlink" title="1.4 给文章添加”分类”属性"></a>1.4 给文章添加”分类”属性</h2><h2 id="-2"><a href="#-2" class="headerlink" title="(```)"></a>(```)</h2><p>title: 文章标题<br>date: 2020-02-10 14:47:40<br>categories: 分类</p>
-<hr>
-<p>(```)</p>
+<pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">分类一</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">categories</span>
+<span class="hljs-meta">---</span>
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">分类二</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">categories</span>
+<span class="hljs-meta">---</span></code></pre>
+
+<h2 id="1-4-给文章添加”分类”属性"><a href="#1-4-给文章添加”分类”属性" class="headerlink" title="1.4 给文章添加”分类”属性"></a>1.4 给文章添加”分类”属性</h2><pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">categories:</span> <span class="hljs-string">分类</span>
+<span class="hljs-meta">---</span></code></pre>
+
 <p>文章分类属性只能存在一个，如果写了多个，只有第一个会启效果</p>
-<h1 id="2-文章标签"><a href="#2-文章标签" class="headerlink" title="2. 文章标签"></a>2. 文章标签</h1><h2 id="2-1-生成标签目录"><a href="#2-1-生成标签目录" class="headerlink" title="2.1 生成标签目录"></a>2.1 生成标签目录</h2><p>(<code>)
-hexo new page tags
-(</code>)</p>
+<h1 id="2-文章标签"><a href="#2-文章标签" class="headerlink" title="2. 文章标签"></a>2. 文章标签</h1><h2 id="2-1-生成标签目录"><a href="#2-1-生成标签目录" class="headerlink" title="2.1 生成标签目录"></a>2.1 生成标签目录</h2><pre><code class="hljs routeros">hexo new<span class="hljs-built_in"> page </span>tags</code></pre>
+
 <p>生成目录之后，会在根目录的source目录中多出一个tags目录。</p>
 <h2 id="2-2-标签配置"><a href="#2-2-标签配置" class="headerlink" title="2.2 标签配置"></a>2.2 标签配置</h2><p>在tags目录中有一个index.md文件，在文件中添加type: tags</p>
-<h2 id="-3"><a href="#-3" class="headerlink" title="(```)"></a>(```)</h2><p>title: 标签<br>date: 2020-02-10 14:47:40<br>type: tags</p>
-<hr>
-<p>(```)</p>
+<pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">标签</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">tags</span>
+<span class="hljs-meta">---</span></code></pre>
+
 <h2 id="2-3-增加多个标签"><a href="#2-3-增加多个标签" class="headerlink" title="2.3 增加多个标签"></a>2.3 增加多个标签</h2><p>在tags目录中有一个index.md文件，复制多份就可以了</p>
-<h2 id="-4"><a href="#-4" class="headerlink" title="(```)"></a>(```)</h2><p>title: 标签一<br>date: 2020-02-10 14:47:40<br>type: tags</p>
-<hr>
-<hr>
-<p>title: 标签二<br>date: 2020-02-10 14:47:40<br>type: tags</p>
-<hr>
-<p>(```)</p>
-<h2 id="2-4-给文章添加”标签”属性"><a href="#2-4-给文章添加”标签”属性" class="headerlink" title="2.4 给文章添加”标签”属性"></a>2.4 给文章添加”标签”属性</h2><h2 id="-5"><a href="#-5" class="headerlink" title="(```)"></a>(```)</h2><p>title: 文章标题<br>date: 2020-02-10 14:47:40<br>categories: 分类<br>tags:</p>
-<ul>
-<li>标签一</li>
-<li>标签二</li>
-</ul>
-<hr>
-<p>(```)</p>
+<pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">标签一</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">tags</span>
+<span class="hljs-meta">---</span>
+
+<span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">标签二</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">type:</span> <span class="hljs-string">tags</span>
+<span class="hljs-meta">---</span></code></pre>
+
+
+<h2 id="2-4-给文章添加”标签”属性"><a href="#2-4-给文章添加”标签”属性" class="headerlink" title="2.4 给文章添加”标签”属性"></a>2.4 给文章添加”标签”属性</h2><pre><code class="hljs yaml"><span class="hljs-meta">---</span>
+<span class="hljs-attr">title:</span> <span class="hljs-string">文章标题</span>
+<span class="hljs-attr">date:</span> <span class="hljs-number">2020</span><span class="hljs-number">-02</span><span class="hljs-number">-10</span> <span class="hljs-number">14</span><span class="hljs-string">:47:40</span>
+<span class="hljs-attr">categories:</span> <span class="hljs-string">分类</span>
+<span class="hljs-attr">tags:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">标签一</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">标签二</span>
+<span class="hljs-meta">---</span></code></pre>
+
 <p>文章标签属性可存在多个</p>
 
             </div>
