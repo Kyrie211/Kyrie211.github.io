@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      959 字
+      2.1k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      26
        分钟
     </span>
   
@@ -236,27 +236,157 @@
 <p>框架要解决的最重要的一个问题是技术整合的问题。<br>软件企业的研发将集中在应用的设计上，而不是具体的技术实现，技术实现是应用的底层支撑，它不应该直接对应用产生影响。<br>框架一般处在低层应用平台（如J2EE）和高层业务逻辑之间的中间层。</p>
 </blockquote>
 <h3 id="1-1-3-Mybatis框架概述"><a href="#1-1-3-Mybatis框架概述" class="headerlink" title="1.1.3 Mybatis框架概述"></a>1.1.3 Mybatis框架概述</h3><blockquote>
-</blockquote>
 <p>mybatis是一个优秀的基于java的持久层框架，它内部封装了jdbc，使开发者只需要关注sql语句本身，而不需要花费精力去处理加载驱动、创建连接、创建statement等繁杂的过程。</p>
+</blockquote>
 <blockquote>
 <p>mybatis通过xml或注解的方式将要执行的各种statement配置起来，并通过java对象和statement中sql的动态参数进行映射生成最终执行的sql语句，最后由mybatis框架执行sql并将结果映射为java对象并返回。</p>
 </blockquote>
 <blockquote>
 <p>采用ORM思想解决了实体和数据库映射的问题，对jdbc进行了封装，屏蔽了jdbc api底层访问细节，使我们不用与jdbc api打交道，就可以完成对数据库的持久化操作。</p>
 </blockquote>
-<h2 id="1-2-JDBC编程回顾"><a href="#1-2-JDBC编程回顾" class="headerlink" title="1.2 JDBC编程回顾"></a>1.2 JDBC编程回顾</h2><h3 id="1-2-1-JDBC编程代码"><a href="#1-2-1-JDBC编程代码" class="headerlink" title="1.2.1 JDBC编程代码"></a>1.2.1 JDBC编程代码</h3><p>‘’’<br>public static void main(String[] args) {<br>    Connection connection = null;<br>    PreparedStatement preparedStatement = null;<br>    ResultSet resultSet = null;<br>    try {<br>        //加载数据库驱动<br>        Class.forName(“com.mysql.jdbc.Driver”);<br>        //通过驱动管理类获取数据库链接<br>        connection = DriverManager<br>        .getConnection(“jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8”,”ro<br>        ot”, “root”);<br>        //定义 sql 语句 ?表示占位符<br>        String sql = “select * from user where username = ?”;<br>        //获取预处理 statement<br>        preparedStatement = connection.prepareStatement(sql);<br>        //设置参数，第一个参数为 sql 语句中参数的序号（从 1 开始），第二个参数为设置的<br>        参数值<br>        preparedStatement.setString(1, “王五”);<br>        //向数据库发出 sql 执行查询，查询出结果集<br>        resultSet = preparedStatement.executeQuery();<br>        //遍历查询结果集<br>        while(resultSet.next()){<br>         System.out.println(resultSet.getString(“id”)+”<br>         “+resultSet.getString(“username”));<br>        }<br>    } catch (Exception e) {<br>        e.printStackTrace();<br>    }finally{<br>        //释放资源<br>        if(resultSet!=null){<br>            try {<br>                resultSet.close();<br>            } catch (SQLException e) {<br>                e.printStackTrace();<br>            }<br>        }<br>        if(preparedStatement!=null){<br>            try {<br>                preparedStatement.close();<br>            } catch (SQLException e) {<br>                e.printStackTrace();<br>            }<br>        }<br>        if(connection!=null){<br>            try {<br>                connection.close();<br>            } catch (SQLException e) {<br>                e.printStackTrace();<br>            }<br>        }<br>    }<br>}</p>
-<p>‘’’</p>
+<h2 id="1-2-JDBC编程回顾"><a href="#1-2-JDBC编程回顾" class="headerlink" title="1.2 JDBC编程回顾"></a>1.2 JDBC编程回顾</h2><h3 id="1-2-1-JDBC编程代码"><a href="#1-2-1-JDBC编程代码" class="headerlink" title="1.2.1 JDBC编程代码"></a>1.2.1 JDBC编程代码</h3><pre><code class="hljs d"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> main(String[] args) &#123;
+	Connection connection = <span class="hljs-literal">null</span>;
+	PreparedStatement preparedStatement = <span class="hljs-literal">null</span>;
+	ResultSet resultSet = <span class="hljs-literal">null</span>;
+	<span class="hljs-keyword">try</span> &#123;
+		<span class="hljs-comment">//加载数据库驱动</span>
+		Class.forName(<span class="hljs-string">"com.mysql.jdbc.Driver"</span>);
+		<span class="hljs-comment">//通过驱动管理类获取数据库链接</span>
+		connection = DriverManager
+		.getConnection(<span class="hljs-string">"jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8"</span>,<span class="hljs-string">"ro</span>
+<span class="hljs-string">		ot"</span>, <span class="hljs-string">"root"</span>);
+		<span class="hljs-comment">//定义 sql 语句 ?表示占位符</span>
+		String sql = <span class="hljs-string">"select * from user where username = ?"</span>;
+		<span class="hljs-comment">//获取预处理 statement</span>
+		preparedStatement = connection.prepareStatement(sql);
+		<span class="hljs-comment">//设置参数，第一个参数为 sql 语句中参数的序号（从 1 开始），第二个参数为设置的</span>
+		参数值
+		preparedStatement.setString(<span class="hljs-number">1</span>, <span class="hljs-string">"王五"</span>);
+		<span class="hljs-comment">//向数据库发出 sql 执行查询，查询出结果集</span>
+		resultSet = preparedStatement.executeQuery();
+		<span class="hljs-comment">//遍历查询结果集</span>
+		<span class="hljs-keyword">while</span>(resultSet.next())&#123;
+		 System.<span class="hljs-keyword">out</span>.println(resultSet.getString(<span class="hljs-string">"id"</span>)+<span class="hljs-string">"</span>
+<span class="hljs-string">		 "</span>+resultSet.getString(<span class="hljs-string">"username"</span>));
+		&#125;
+	&#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;
+		e.printStackTrace();
+	&#125;<span class="hljs-keyword">finally</span>&#123;
+		<span class="hljs-comment">//释放资源</span>
+		<span class="hljs-keyword">if</span>(resultSet!=<span class="hljs-literal">null</span>)&#123;
+			<span class="hljs-keyword">try</span> &#123;
+				resultSet.close();
+			&#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+				e.printStackTrace();
+			&#125; 
+		&#125;
+		<span class="hljs-keyword">if</span>(preparedStatement!=<span class="hljs-literal">null</span>)&#123;
+			<span class="hljs-keyword">try</span> &#123;
+				preparedStatement.close();
+			&#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+				e.printStackTrace();
+			&#125; 
+		&#125;
+		<span class="hljs-keyword">if</span>(connection!=<span class="hljs-literal">null</span>)&#123;
+			<span class="hljs-keyword">try</span> &#123;
+				connection.close();
+			&#125; <span class="hljs-keyword">catch</span> (SQLException e) &#123;
+				e.printStackTrace();
+			&#125; 
+		&#125; 
+	&#125; 
+&#125;</code></pre>
+
 <h3 id="1-2-2-JDBC问题分析"><a href="#1-2-2-JDBC问题分析" class="headerlink" title="1.2.2 JDBC问题分析"></a>1.2.2 JDBC问题分析</h3><blockquote>
-<p>1、数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。<br>2、Sql语句在代码中硬编码，造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。<br>3、使用preparedStatement向占有位符号传参数存在硬编码，因为sql语句的where条件不一定，可能多也可能少，修改sql还要修改代码，系统不易维护。<br>4、对结果集解析存在硬编码（查询列名），sql变化导致解析代码变化，系统不易维护，如果能将数据库记录封装成pojo对象解析比较方便。</p>
+<p>1、数据库链接创建、释放频繁造成系统资源浪费从而影响系统性能，如果使用数据库链接池可解决此问题。</p>
+</blockquote>
+<blockquote>
+<p>2、Sql语句在代码中硬编码，造成代码不易维护，实际应用sql变化的可能较大，sql变动需要改变java代码。</p>
+</blockquote>
+<blockquote>
+<p>3、使用preparedStatement向占有位符号传参数存在硬编码，因为sql语句的where条件不一定，可能多也可能少，修改sql还要修改代码，系统不易维护。</p>
+</blockquote>
+<blockquote>
+<p>4、对结果集解析存在硬编码（查询列名），sql变化导致解析代码变化，系统不易维护，如果能将数据库记录封装成pojo对象解析比较方便。</p>
 </blockquote>
 <hr>
 <h1 id="2-Mybatis框架快速入门"><a href="#2-Mybatis框架快速入门" class="headerlink" title="2 Mybatis框架快速入门"></a>2 Mybatis框架快速入门</h1><h2 id="2-0-简单的再说一遍"><a href="#2-0-简单的再说一遍" class="headerlink" title="2.0 简单的再说一遍"></a>2.0 简单的再说一遍</h2><blockquote>
+<p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 <strong><em>XML 或 注解</em></strong> 来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
 </blockquote>
-<p>MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 <strong><em>XML 或注解</em></strong> 来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
 <h2 id="2-1-开发准备"><a href="#2-1-开发准备" class="headerlink" title="2.1 开发准备"></a>2.1 开发准备</h2><blockquote>
 <p>方式一：</p>
+<blockquote>
+<p>网上下载Mybatis相关jar包，将mybatis-x.x.x.jar文件加入到项目中，即可。</p>
 </blockquote>
+</blockquote>
+<blockquote>
+<p>方式二：</p>
+<blockquote>
+<p>如果使用 Maven 来构建项目，则需将下面的依赖代码置于 pom.xml 文件中：</p>
+</blockquote>
+</blockquote>
+<pre><code class="hljs dts"><span class="hljs-comment">// pom.xml中添加依赖</span>
+<span class="hljs-params">&lt;dependency&gt;</span>
+  <span class="hljs-params">&lt;groupId&gt;</span>org.mybatis<span class="hljs-params">&lt;/groupId&gt;</span>
+  <span class="hljs-params">&lt;artifactId&gt;</span>mybatis<span class="hljs-params">&lt;/artifactId&gt;</span>
+  <span class="hljs-params">&lt;version&gt;</span>x.x.x<span class="hljs-params">&lt;/version&gt;</span>
+<span class="hljs-params">&lt;/dependency&gt;</span></code></pre>
 
+<h2 id="2-2-Mybatis的主配置文件-mybatis-config-xml"><a href="#2-2-Mybatis的主配置文件-mybatis-config-xml" class="headerlink" title="2.2 Mybatis的主配置文件(mybatis-config.xml)"></a>2.2 Mybatis的主配置文件(mybatis-config.xml)</h2><p>XML 配置文件中包含了对 MyBatis 系统的核心设置，包括获取数据库连接实例的数据源（DataSource）以及决定事务作用域和控制方式的事务管理器（TransactionManager）。后面会再探讨 XML 配置文件的详细内容，这里先给出一个简单的示例：</p>
+<pre><code class="hljs dust"><span class="xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span>
+<span class="xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">configuration</span></span></span>
+<span class="xml">  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span>
+<span class="xml">  "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span></span>
+<span class="xml">  <span class="hljs-tag">&lt;<span class="hljs-name">environments</span> <span class="hljs-attr">default</span>=<span class="hljs-string">"development"</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">environment</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"development"</span>&gt;</span></span>
+<span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">transactionManager</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"JDBC"</span>/&gt;</span></span>
+<span class="xml">      <span class="hljs-tag">&lt;<span class="hljs-name">dataSource</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"POOLED"</span>&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"driver"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"$</span></span></span><span class="hljs-template-variable">&#123;driver&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>/&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"url"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"$</span></span></span><span class="hljs-template-variable">&#123;url&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>/&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"$</span></span></span><span class="hljs-template-variable">&#123;username&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>/&gt;</span></span>
+<span class="xml">        <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"$</span></span></span><span class="hljs-template-variable">&#123;password&#125;</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>/&gt;</span></span>
+<span class="xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">dataSource</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">environment</span>&gt;</span></span>
+<span class="xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">environments</span>&gt;</span></span>
+<span class="xml">  // 每一个mapper对应着一些sql操作的集合</span>
+<span class="xml">  <span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span></span>
+<span class="xml">    <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">resource</span>=<span class="hljs-string">"org/mybatis/example/BlogMapper.xml"</span>/&gt;</span></span>
+<span class="xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span></span></code></pre>
+
+<p>当然，还有很多可以在 XML 文件中配置的选项，上面的示例仅罗列了最关键的部分。 注意 XML 头部的声明，它用来验证 XML 文档的正确性。environment 元素体中包含了事务管理和连接池的配置。mappers 元素则包含了一组映射器（mapper），这些映射器的 XML 映射文件包含了 SQL 代码和映射定义信息。</p>
+<h2 id="2-3-开始使用Mybatis"><a href="#2-3-开始使用Mybatis" class="headerlink" title="2.3 开始使用Mybatis"></a>2.3 开始使用Mybatis</h2><h3 id="2-3-0-写在前面"><a href="#2-3-0-写在前面" class="headerlink" title="2.3.0 写在前面"></a>2.3.0 写在前面</h3><blockquote>
+<p>每个基于 Mybatis 的应用都是以一个 <strong><em>SqlSessionFactory</em></strong> 的实例为核心的。SqlSessionFactory 的实例可以通过 <strong><em>SqlSessionFactoryBuilder</em></strong> 获得。而 SqlSessionFactoryBuilder 则可以从 <strong><em>XML 配置文件</em></strong>或一个预先配置的 <strong><em>Configuration</em></strong> 实例来构建出 SqlSessionFactory 实例。</p>
+</blockquote>
+<h3 id="2-3-1-从-XML-中构建-SqlSessionFactory"><a href="#2-3-1-从-XML-中构建-SqlSessionFactory" class="headerlink" title="2.3.1 从 XML 中构建 SqlSessionFactory"></a>2.3.1 从 XML 中构建 SqlSessionFactory</h3><blockquote>
+<p>从 <strong><em>XML</em></strong> 文件中构建 SqlSessionFactory的实例非常简单，建议使用类路径下的资源文件进行配置。 但也可以使用任意的输入流（InputStream）实例，比如用文件路径字符串或 file:// URL 构造的输入流。MyBatis 包含一个名叫 Resources 的工具类，它包含一些实用方法，使得从类路径或其它位置加载资源文件更加容易。</p>
+</blockquote>
+<pre><code class="hljs routeros">String<span class="hljs-built_in"> resource </span>= <span class="hljs-string">"org/mybatis/example/mybatis-config.xml"</span>;
+InputStream inputStream = Resources.getResourceAsStream(resource);
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);</code></pre>
+
+<h3 id="2-3-2-不从-XML-中构建-SqlSessionFactory（Configuration类）"><a href="#2-3-2-不从-XML-中构建-SqlSessionFactory（Configuration类）" class="headerlink" title="2.3.2 不从 XML 中构建 SqlSessionFactory（Configuration类）"></a>2.3.2 不从 XML 中构建 SqlSessionFactory（Configuration类）</h3><p>如果你更愿意直接从 Java 代码而不是 XML 文件中创建配置，或者想要创建你自己的配置建造器，MyBatis 也提供了完整的配置类，提供了所有与 XML 文件等价的配置项。</p>
+<pre><code class="hljs reasonml">DataSource dataSource = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">BlogDataSourceFactory</span>.</span></span>get<span class="hljs-constructor">BlogDataSource()</span>;
+TransactionFactory transactionFactory = <span class="hljs-keyword">new</span> <span class="hljs-constructor">JdbcTransactionFactory()</span>;
+Environment environment = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Environment(<span class="hljs-string">"development"</span>, <span class="hljs-params">transactionFactory</span>, <span class="hljs-params">dataSource</span>)</span>;
+Configuration configuration = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Configuration(<span class="hljs-params">environment</span>)</span>;
+configuration.add<span class="hljs-constructor">Mapper(BlogMapper.<span class="hljs-params">class</span>)</span>;
+SqlSessionFactory sqlSessionFactory = <span class="hljs-keyword">new</span> <span class="hljs-constructor">SqlSessionFactoryBuilder()</span>.build(configuration);</code></pre>
+
+<p>注意该例中，configuration 添加了一个映射器类（mapper class）。映射器类是 Java 类，它们包含 SQL 映射注解从而避免依赖 XML 文件。不过，由于 Java 注解的一些限制以及某些 MyBatis 映射的复杂性，要使用大多数高级映射（比如：嵌套联合映射），仍然需要使用 XML 配置。有鉴于此，如果存在一个同名 XML 配置文件，MyBatis 会自动查找并加载它（在这个例子中，基于类路径和 BlogMapper.class 的类名，会加载 BlogMapper.xml）。具体细节暂时可以不考虑。</p>
+<h3 id="2-3-3-从-SqlSessionFactory-中获取-SqlSession"><a href="#2-3-3-从-SqlSessionFactory-中获取-SqlSession" class="headerlink" title="2.3.3 从 SqlSessionFactory 中获取 SqlSession"></a>2.3.3 从 SqlSessionFactory 中获取 SqlSession</h3><p>既然有了 SqlSessionFactory，顾名思义，我们可以从中获得 SqlSession 的实例。SqlSession 提供了在数据库执行 SQL 命令所需的所有方法。你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。例如：</p>
+<pre><code class="hljs reasonml"><span class="hljs-keyword">try</span> (SqlSession session = sqlSessionFactory.<span class="hljs-keyword">open</span><span class="hljs-constructor">Session()</span>) &#123;
+  Blog blog = (Blog) session.select<span class="hljs-constructor">One(<span class="hljs-string">"org.mybatis.example.BlogMapper.selectBlog"</span>, 101)</span>;
+&#125;</code></pre>
+
+<p>诚然，这种方式能够正常工作，对使用旧版本 MyBatis 的用户来说也比较熟悉。但现在有了一种更简洁的方式——使用和指定语句的参数和返回值相匹配的接口（比如 BlogMapper.class），现在你的代码不仅更清晰，更加类型安全，还不用担心可能出错的字符串字面值以及强制类型转换。</p>
+<pre><code class="hljs reasonml"><span class="hljs-keyword">try</span> (SqlSession session = sqlSessionFactory.<span class="hljs-keyword">open</span><span class="hljs-constructor">Session()</span>) &#123;
+  BlogMapper mapper = session.get<span class="hljs-constructor">Mapper(BlogMapper.<span class="hljs-params">class</span>)</span>;
+  Blog blog = mapper.select<span class="hljs-constructor">Blog(101)</span>;
+&#125;</code></pre>
+
+<h2 id="2-4-基于xml配置的Mybatis具体案例"><a href="#2-4-基于xml配置的Mybatis具体案例" class="headerlink" title="2.4 基于xml配置的Mybatis具体案例"></a>2.4 基于xml配置的Mybatis具体案例</h2>
             </div>
             <hr>
             <div>
