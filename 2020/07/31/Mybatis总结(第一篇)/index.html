@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      2.6k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      28
+      34
        分钟
     </span>
   
@@ -467,7 +467,51 @@ public <span class="hljs-keyword">class</span> MybatisTest &#123;
 <li>我们使用注解之后，将变得更为简单，只需要编写一个 mybatis 配置文件就够了。</li>
 <li>这里面的一些具体的类、接口、操作的意义暂时可以先不管，后续我们再慢慢展开…</li>
 </ol>
+<hr>
+<h1 id="3-Mybatis注解开发（介绍）"><a href="#3-Mybatis注解开发（介绍）" class="headerlink" title="3. Mybatis注解开发（介绍）"></a>3. Mybatis注解开发（介绍）</h1><h2 id="3-0-写在前面"><a href="#3-0-写在前面" class="headerlink" title="3.0 写在前面"></a>3.0 写在前面</h2><ul>
+<li><p>Mybatis提供了一系列注解，可以实现对xml中的某些配置的精简化，从而使开发更加简便。</p>
+</li>
+<li><p>虽然注解开发十分简便，几乎可以做到0配置（xml），码代码速度快。值得一提的是，这种纯注解的方式，并不十分推荐。原因之一便是造成代码的可读性变差，可维护性变差。</p>
+</li>
+<li><p>开发中推荐使用”半”注解,”半”xml的方式。</p>
+</li>
+</ul>
+<h2 id="3-1-注解开发"><a href="#3-1-注解开发" class="headerlink" title="3.1 注解开发"></a>3.1 注解开发</h2><h3 id="3-1-1-在持久层接口中添加注解"><a href="#3-1-1-在持久层接口中添加注解" class="headerlink" title="3.1.1 在持久层接口中添加注解"></a>3.1.1 在持久层接口中添加注解</h3><pre><code class="hljs dart">public <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">IUserDao</span> </span>&#123;
+    <span class="hljs-comment"><span class="markdown">/**</span></span>
+<span class="hljs-comment"><span class="markdown"><span class="hljs-bullet">    * </span>查询所有用户</span></span>
+<span class="hljs-comment"><span class="markdown"><span class="hljs-bullet">    * </span>@return</span></span>
+<span class="hljs-comment"><span class="markdown"><span class="hljs-code">    */</span></span></span>
+    <span class="hljs-meta">@Select</span>(<span class="hljs-string">"select * from user"</span>) <span class="hljs-comment">// 添加注解</span>
+    <span class="hljs-built_in">List</span>&lt;User&gt; findAll();
+&#125;</code></pre>
 
+<h3 id="3-1-2-SqlMapConfig-xml配置"><a href="#3-1-2-SqlMapConfig-xml配置" class="headerlink" title="3.1.2 SqlMapConfig.xml配置"></a>3.1.2 SqlMapConfig.xml配置</h3><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 告知 mybatis 映射配置的位置 --&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">mappers</span>&gt;</span> 
+    <span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.itheima.dao.IUserDao"</span>/&gt;</span>
+    // 在使用基于注解的 Mybatis 配置时，请移除 xml 的映射配置（IUserDao.xml）。
+    /** 
+    在前文中，我们使用IUserDao.xml文件来配置，此时我们有了Select注解，就不再需要了，只需告知Mybatis，注解dao接口的位置即可。
+    */
+<span class="hljs-tag">&lt;/<span class="hljs-name">mappers</span>&gt;</span></code></pre>
+
+
+<h3 id="3-1-3-注解简要介绍"><a href="#3-1-3-注解简要介绍" class="headerlink" title="3.1.3 注解简要介绍"></a>3.1.3 注解简要介绍</h3><blockquote>
+<p>值得一提的是，这里将介绍几种基本的注解。具体操作，之后慢慢展开，这里我们只要知道一点， Mybatis的强大，让我们开发效率变得简单。</p>
+</blockquote>
+<pre><code class="hljs less"><span class="hljs-variable">@Insert:</span>实现新增
+<span class="hljs-variable">@Update</span>:实现更新
+<span class="hljs-variable">@Delete</span>:实现删除
+<span class="hljs-variable">@Select</span>:实现查询
+<span class="hljs-variable">@Result</span>:实现结果集封装
+<span class="hljs-variable">@Results</span>:可以与<span class="hljs-variable">@Result</span> 一起使用，封装多个结果集
+<span class="hljs-variable">@ResultMap</span>:实现引用<span class="hljs-variable">@Results</span> 定义的封装
+<span class="hljs-variable">@One</span>:实现一对一结果集封装
+<span class="hljs-variable">@Many</span>:实现一对多结果集封装
+<span class="hljs-variable">@SelectProvider</span>: 实现动态 SQL 映射
+<span class="hljs-variable">@CacheNamespace</span>:实现注解二级缓存的使用</code></pre>
+
+
+<h1 id="EOF"><a href="#EOF" class="headerlink" title="EOF"></a>EOF</h1>
             </div>
             <hr>
             <div>
