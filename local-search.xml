@@ -4,6 +4,29 @@
   
   
   <entry>
+    <title>Spring基础（一）概述</title>
+    <link href="/2020/08/05/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/"/>
+    <url>/2020/08/05/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="01-Spring概述"><a href="#01-Spring概述" class="headerlink" title="01 Spring概述"></a>01 Spring概述</h1><h2 id="1-Spring-概述"><a href="#1-Spring-概述" class="headerlink" title="1 Spring 概述"></a>1 Spring 概述</h2><p>①Spring 是一个开源框架</p><p>②Spring 为简化企业级开发而生，使用 Spring，JavaBean 就可以实现很多以前要靠 EJB<br>才能实现的功能。同样的功能，在 EJB 中要通过繁琐的配置和复杂的代码才能够实现，而在<br>Spring 中却非常的优雅和简洁。</p><p>③Spring 是一个 <strong><em>IOC(DI)</em></strong>和 <strong><em>AOP</em></strong> 容器框架。(<strong><em>控制反转</em></strong> &amp;&amp; <strong><em>面向切面编程</em></strong>)</p><p>④Spring 的优良特性</p><blockquote><p>[1] 非侵入式：基于 Spring 开发的应用中的对象可以不依赖于 Spring 的 API</p></blockquote><blockquote><p>[2] 依赖注入：DI——Dependency Injection，反转控制(IOC)最经典的实现。</p></blockquote><blockquote><p>[3] 面向切面编程：Aspect Oriented Programming——AOP</p></blockquote><blockquote><p>[4] 容器：Spring 是一个容器，因为它包含并且管理应用对象的生命周期</p></blockquote><blockquote><p>[5] 组件化：Spring 实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用 XML 和 Java 注解组合这些对象。</p></blockquote><blockquote><p>[6] 一站式：在 IOC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第<br>三方类库（实际上 Spring 自身也提供了表述层的 SpringMVC 和持久层的 Spring JDBC）。</p></blockquote><p>⑤Spring 目前的版本<br>缺图，待补</p><p>⑥Spring 模块<br>缺图，待补</p><h2 id="2-搭建-Spring-运行时环境"><a href="#2-搭建-Spring-运行时环境" class="headerlink" title="2 搭建 Spring 运行时环境"></a>2 搭建 Spring 运行时环境</h2><p>搭建Spring运行环境，有两种方式 — 大多数的环境搭建都如此。</p><h3 id="2-1-导入jar包方式"><a href="#2-1-导入jar包方式" class="headerlink" title="2.1 导入jar包方式"></a>2.1 导入jar包方式</h3><p>①加入 JAR 包<br>[1]Spring 自身 JAR 包：spring-framework-4.0.0.RELEASE\libs 目录下<br>spring-beans-4.0.0.RELEASE.jar<br>spring-context-4.0.0.RELEASE.jar<br>spring-core-4.0.0.RELEASE.jar<br>spring-expression-4.0.0.RELEASE.jar<br>[2]commons-logging-1.1.1.jar</p><blockquote><p>注意的是：你所需要导入的jar包需要根据实际需要来导入。换言之，你应该要了解Spring各个模块所需的jar包都是哪些。 Spring模块图见上文。</p></blockquote><p>②根据需要创建 Spring 配置文件</p><h3 id="2-2-Maven导入依赖"><a href="#2-2-Maven导入依赖" class="headerlink" title="2.2 Maven导入依赖"></a>2.2 Maven导入依赖</h3><p>Maven是一种项目管理工具，具体做的事就是：从’本地仓库’ 或 ‘远程仓库’中导入所需要的依赖坐标。这里所说的’依赖坐标’就是相关jar包的坐标，只需导入坐标的好处是可以降低程序臃肿程度，jar包就只用一份就可。</p><p>代码示例：</p><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 导入spring-core依赖 --&gt;</span><span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-core --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.2.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre><h2 id="3-Spring-HelloWorld"><a href="#3-Spring-HelloWorld" class="headerlink" title="3 Spring HelloWorld"></a>3 Spring HelloWorld</h2><p>一般的，学习一门编程语言，总是会以编写出HelloWorld代码来简单入门。<br>不失一般性，这里将以Spring HelloWorld方式来简单入门。</p><blockquote><p>①目标：使用 Spring 创建对象，为属性赋值<br>②创建 Student 类</p></blockquote><pre><code class="hljs angelscript"><span class="hljs-comment">// Student.java</span><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Student</span> &#123;    <span class="hljs-keyword">private</span> Integer studentId;    <span class="hljs-keyword">private</span> String stuName;    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> age;    <span class="hljs-comment">// 省略getter/setter/toString</span>&#125;</code></pre><blockquote><p>③创建 Spring 配置文件</p></blockquote><pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- spring配置文件,这里命名为helloworld.xml --&gt;</span><span class="hljs-comment">&lt;!-- 名字命名无强制要求，这里为了突出意图，以此命名 --&gt;</span><span class="hljs-comment">&lt;!-- 使用bean元素定义一个由IOC容器创建的对象 --&gt;</span><span class="hljs-comment">&lt;!-- class属性指定用于创建bean的全类名 --&gt;</span><span class="hljs-comment">&lt;!-- id属性指定用于引用bean实例的标识 --&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"student"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.atguigu.helloworld.bean.Student"</span>&gt;</span>    <span class="hljs-comment">&lt;!-- 使用property子元素为bean的属性赋值 --&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"studentId"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1001"</span>/&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stuName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Tom2015"</span>/&gt;</span>    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"20"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre><blockquote><p>④测试：通过 Spring 的 IOC 容器创建 Student 类实例</p></blockquote><pre><code class="hljs arduino"><span class="hljs-comment">// junit测试类 - 测试方法</span>@Test<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>&#123;    <span class="hljs-comment">//1.创建IOC容器对象</span>    ApplicationContext iocContainer = <span class="hljs-keyword">new</span> ClassPathXmlApplicationContext(<span class="hljs-string">"helloworld.xml"</span>);    <span class="hljs-comment">//2.根据id值获取bean实例对象</span>    Student student = (Student) iocContainer.getBean(<span class="hljs-string">"student"</span>);    <span class="hljs-comment">//3.打印bean</span>    System.out.<span class="hljs-built_in">println</span>(student);&#125;</code></pre><blockquote><p>⑤验证：Spring 在创建 IOC 容器对象时，就已经完成了 bean 的创建和属性的赋值。</p></blockquote><h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4 小结"></a>4 小结</h2><p>Spring框架相当于是一个容器，所有的类一旦被Spring容器管理起来，就不用我们去操心这些类的其一系列事情。<br>我们需要做的就是放心的将这些类交由Spring容器管理，然后舒舒服服的享受Spring带给我们的便利。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>框架</tag>
+      
+      <tag>Spring</tag>
+      
+      <tag>ssm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Mybatis框架总结（第一篇）</title>
     <link href="/2020/07/31/Mybatis%E6%80%BB%E7%BB%93(%E7%AC%AC%E4%B8%80%E7%AF%87)/"/>
     <url>/2020/07/31/Mybatis%E6%80%BB%E7%BB%93(%E7%AC%AC%E4%B8%80%E7%AF%87)/</url>
@@ -16,9 +39,9 @@
       
       <tag>Mybatis</tag>
       
-      <tag>SSM</tag>
-      
       <tag>框架</tag>
+      
+      <tag>ssm</tag>
       
     </tags>
     
@@ -56,7 +79,7 @@
     
     <tags>
       
-      <tag>Hexo</tag>
+      <tag>hexo</tag>
       
     </tags>
     
