@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="Krismile">
   <meta name="keywords" content="">
-  <title>归档 - YouBlog</title>
+  <title>Spring基础（二）IOC - YouBlog</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +55,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -159,6 +171,48 @@
             </span>
 
             
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-07 09:58" pubdate>
+      2020年8月7日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      573 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
           </div>
 
           
@@ -169,61 +223,143 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 5 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/08/07/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89IOC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（二）IOC</span>
-      <time style="float: right;">08-07</time>
-    </a>
-  
-    
-    <a href="/2020/08/05/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（一）概述</span>
-      <time style="float: right;">08-05</time>
-    </a>
-  
-    
-    <a href="/2020/07/31/Mybatis%E6%80%BB%E7%BB%93(%E7%AC%AC%E4%B8%80%E7%AF%87)/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Mybatis框架总结（第一篇）</span>
-      <time style="float: right;">07-31</time>
-    </a>
-  
-    
-    <a href="/2020/07/28/My-Test001/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">My Test001</span>
-      <time style="float: right;">07-28</time>
-    </a>
-  
-    
-    <a href="/2020/07/28/Hexo%E5%8D%9A%E5%AE%A2-%E6%B7%BB%E5%8A%A0%E5%88%86%E7%B1%BB%E5%8F%8A%E6%A0%87%E7%AD%BE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo如何添加分类和标签</span>
-      <time style="float: right;">07-28</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring基础（二）IOC</h1>
+            
+              <p class="note note-info">
+                
+                  该博文更新于：2020年8月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="2-IOC容器及Bean的配置"><a href="#2-IOC容器及Bean的配置" class="headerlink" title="2.IOC容器及Bean的配置"></a>2.IOC容器及Bean的配置</h1><h2 id="1-IOC和DI"><a href="#1-IOC和DI" class="headerlink" title="1 IOC和DI"></a>1 IOC和DI</h2><h3 id="1-1-IOC-Inversion-of-Control-：-反转控制。"><a href="#1-1-IOC-Inversion-of-Control-：-反转控制。" class="headerlink" title="1.1 IOC(Inversion of Control)： 反转控制。"></a>1.1 IOC(Inversion of Control)： 反转控制。</h3><blockquote>
+<p>在应用程序中的组件需要获取资源时，传统的方式是组件主动的从容器中获取所需<br>要的资源，在这样的模式下开发人员往往需要知道在具体容器中特定资源的获取方式，<br>增加了学习成本，同时降低了开发效率。<br>反转控制的思想完全颠覆了应用程序组件获取资源的传统方式：反转了资源的获取<br>方向——改由容器主动的将资源推送给需要的组件，开发人员不需要知道容器是如何创<br>建资源对象的，只需要提供接收资源的方式即可，极大的降低了学习成本，提高了开发<br>的效率。这种行为也称为查找的被动形式。</p>
+</blockquote>
+<h3 id="1-2-DI-Dependency-Injection-：-依赖注入。"><a href="#1-2-DI-Dependency-Injection-：-依赖注入。" class="headerlink" title="1.2 DI(Dependency Injection)： 依赖注入。"></a>1.2 DI(Dependency Injection)： 依赖注入。</h3><blockquote>
+<p>IOC 的另一种表述方式：即组件以一些预先定义好的方式(例如：setter 方法)接受<br>来自于容器的资源注入。相对于 IOC 而言，这种表述更直接。</p>
+</blockquote>
+<h3 id="1-3-IOC-容器在-Spring-中的实现"><a href="#1-3-IOC-容器在-Spring-中的实现" class="headerlink" title="1.3 IOC 容器在 Spring 中的实现"></a>1.3 IOC 容器在 Spring 中的实现</h3><blockquote>
+<p>[1]在通过 IOC 容器读取 Bean 的实例之前，需要先将 IOC 容器本身实例化。<br>[2]Spring 提供了 IOC 容器的两种实现方式</p>
+<blockquote>
+<p>(1)BeanFactory：IOC 容器的基本实现，是 Spring 内部的基础设施，是面向 Spring<br>本身的，不是提供给开发人员使用的。<br>(2)ApplicationContext：BeanFactory 的子接口，提供了更多高级特性。面向 Spring<br>的使用者，几乎所有场合都使用 ApplicationContext 而不是底层的 BeanFactory。</p>
+</blockquote>
+</blockquote>
+<h3 id="1-4-ApplicationContext-的主要实现类"><a href="#1-4-ApplicationContext-的主要实现类" class="headerlink" title="1.4 ApplicationContext 的主要实现类"></a>1.4 ApplicationContext 的主要实现类</h3><p>[1]ClassPathXmlApplicationContext：对应类路径下的 XML 格式的配置文件</p>
+<p>[2]FileSystemXmlApplicationContext：对应文件系统中的 XML 格式的配置文件</p>
+<p>[3]在初始化时就创建单例的 bean，也可以通过配置的方式指定创建的 Bean 是多实<br>例的。</p>
+<h3 id="1-5-ConfigurableApplicationContext"><a href="#1-5-ConfigurableApplicationContext" class="headerlink" title="1.5 ConfigurableApplicationContext"></a>1.5 ConfigurableApplicationContext</h3><p>[1]是 ApplicationContext 的子接口，包含一些扩展方法</p>
+<p>[2]refresh()和 close()让 ApplicationContext 具有启动、关闭和刷新上下文的能力。</p>
+<h3 id="1-6-WebApplicationContext"><a href="#1-6-WebApplicationContext" class="headerlink" title="1.6 WebApplicationContext"></a>1.6 WebApplicationContext</h3><p>专门为 WEB 应用而准备的，它允许从相对于 WEB 根目录的路径中完成初始化工作</p>
 
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SSM/">SSM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring/">Spring</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/05/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/">
+                        <span class="hidden-mobile">Spring基础（一）概述</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    function loadGitalk() {
+      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
+      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
+        var gitalk = new Gitalk({
+          clientID: '5a641a260b6efed1b635',
+          clientSecret: '671d7a46901a3a8b3aaeb0d0ede5ce82126e45ed',
+          repo: 'hexo_blogCommentsStore',
+          owner: 'Kyrie211',
+          admin: ["Kyrie211"],
+          id: md5(location.pathname),
+          language: 'zh-CN',
+          labels: ["Gitalk"],
+          perPage: 10,
+          pagerDirection: 'last',
+          createIssueManually: true,
+          distractionFreeMode: false
+        });
+        gitalk.render('gitalk-container');
+      });
+    }
+    waitElementVisible('gitalk-container', loadGitalk);
+  </script>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -346,6 +482,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -353,7 +514,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Spring基础（二）IOC&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -368,6 +529,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "❡"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -381,6 +559,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
