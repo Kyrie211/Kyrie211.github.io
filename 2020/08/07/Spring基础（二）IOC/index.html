@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.3k 字
+      4.2k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      54
        分钟
     </span>
   
@@ -237,12 +237,12 @@
             
               <p class="note note-info">
                 
-                  该博文更新于：2020年8月7日 上午
+                  该博文更新于：2020年8月12日 上午
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="2-IOC容器及Bean的配置"><a href="#2-IOC容器及Bean的配置" class="headerlink" title="2.IOC容器及Bean的配置"></a>2.IOC容器及Bean的配置</h1><h2 id="1-IOC和DI"><a href="#1-IOC和DI" class="headerlink" title="1 IOC和DI"></a>1 IOC和DI</h2><h3 id="1-1-IOC-Inversion-of-Control-：-反转控制。"><a href="#1-1-IOC-Inversion-of-Control-：-反转控制。" class="headerlink" title="1.1 IOC(Inversion of Control)： 反转控制。"></a>1.1 IOC(Inversion of Control)： 反转控制。</h3><blockquote>
+              <h1 id="IOC容器及Bean的配置"><a href="#IOC容器及Bean的配置" class="headerlink" title="IOC容器及Bean的配置"></a>IOC容器及Bean的配置</h1><h2 id="1-IOC和DI"><a href="#1-IOC和DI" class="headerlink" title="1 IOC和DI"></a>1 IOC和DI</h2><h3 id="1-1-IOC-Inversion-of-Control-：-反转控制。"><a href="#1-1-IOC-Inversion-of-Control-：-反转控制。" class="headerlink" title="1.1 IOC(Inversion of Control)： 反转控制。"></a>1.1 IOC(Inversion of Control)： 反转控制。</h3><blockquote>
 <p>在应用程序中的组件需要获取资源时，传统的方式是组件主动的从容器中获取所需<br>要的资源，在这样的模式下开发人员往往需要知道在具体容器中特定资源的获取方式，<br>增加了学习成本，同时降低了开发效率。<br>反转控制的思想完全颠覆了应用程序组件获取资源的传统方式：反转了资源的获取<br>方向——改由容器主动的将资源推送给需要的组件，开发人员不需要知道容器是如何创<br>建资源对象的，只需要提供接收资源的方式即可，极大的降低了学习成本，提高了开发<br>的效率。这种行为也称为查找的被动形式。</p>
 </blockquote>
 <h3 id="1-2-DI-Dependency-Injection-：-依赖注入。"><a href="#1-2-DI-Dependency-Injection-：-依赖注入。" class="headerlink" title="1.2 DI(Dependency Injection)： 依赖注入。"></a>1.2 DI(Dependency Injection)： 依赖注入。</h3><blockquote>
@@ -254,6 +254,7 @@
 <p>(1)BeanFactory：IOC 容器的基本实现，是 Spring 内部的基础设施，是面向 Spring<br>本身的，不是提供给开发人员使用的。<br>(2)ApplicationContext：BeanFactory 的子接口，提供了更多高级特性。面向 Spring<br>的使用者，几乎所有场合都使用 ApplicationContext 而不是底层的 BeanFactory。</p>
 </blockquote>
 </blockquote>
+<p><img src="https://s1.ax1x.com/2020/08/12/ajA7WT.png" srcset="/img/loading.gif" alt="ApplicationContext"></p>
 <h3 id="1-4-ApplicationContext-的主要实现类"><a href="#1-4-ApplicationContext-的主要实现类" class="headerlink" title="1.4 ApplicationContext 的主要实现类"></a>1.4 ApplicationContext 的主要实现类</h3><p>[1]ClassPathXmlApplicationContext：对应类路径下的 XML 格式的配置文件</p>
 <p>[2]FileSystemXmlApplicationContext：对应文件系统中的 XML 格式的配置文件</p>
 <p>[3]在初始化时就创建单例的 bean，也可以通过配置的方式指定创建的 Bean 是多实<br>例的。</p>
@@ -426,8 +427,7 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">util:list</span>&gt;</span></code></pre>
 
 <hr>
-<h2 id="4-通过工厂创建-bean"><a href="#4-通过工厂创建-bean" class="headerlink" title="4 通过工厂创建 bean"></a>4 通过工厂创建 bean</h2><hr>
-<h2 id="5-bean-的高级配置"><a href="#5-bean-的高级配置" class="headerlink" title="5 bean 的高级配置"></a>5 bean 的高级配置</h2><h3 id="5-1-配置信息的继承"><a href="#5-1-配置信息的继承" class="headerlink" title="5.1 配置信息的继承"></a>5.1 配置信息的继承</h3><p>①背景<br>查看下面两个 Employee 的配置，其中 dept 属性是重复的。</p>
+<h2 id="4-通过工厂创建-bean"><a href="#4-通过工厂创建-bean" class="headerlink" title="4 通过工厂创建 bean"></a>4 通过工厂创建 bean</h2><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://s1.ax1x.com/2020/08/12/ajEF6e.png" srcset="/img/loading.gif" alt="FactoryBean"></h2><h2 id="5-bean-的高级配置"><a href="#5-bean-的高级配置" class="headerlink" title="5 bean 的高级配置"></a>5 bean 的高级配置</h2><h3 id="5-1-配置信息的继承"><a href="#5-1-配置信息的继承" class="headerlink" title="5.1 配置信息的继承"></a>5.1 配置信息的继承</h3><p>①背景<br>查看下面两个 Employee 的配置，其中 dept 属性是重复的。</p>
 <pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"dept"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.kyrie.entity.Department"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"deptId"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"100"</span>/&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"deptName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"IT"</span>/&gt;</span>
@@ -484,6 +484,7 @@
 <p>默认情况下，Spring 只为每个在 IOC 容器里声明的 bean 创建唯一一个实例，<br>整个 IOC 容器范围内都能共享该实例：<br>所有后续的 getBean()调用和 bean 引用都将返回这个唯一的 bean 实例。该作用域被称为 singleton，它是所有 bean 的默认作用域。</p>
 </blockquote>
 <p>当 bean 的作用域为单例时，Spring 会在 IOC 容器对象创建时就创建 bean 的对<br>象实例。而当 bean 的作用域为 prototype 时，IOC 容器在获取 bean 的实例时创建<br>bean 的实例对象。</p>
+<p><img src="https://s1.ax1x.com/2020/08/12/ajAvwR.png" srcset="/img/loading.gif" alt="bean生命周期"></p>
 <h3 id="5-4-bean-的生命周期"><a href="#5-4-bean-的生命周期" class="headerlink" title="5.4 bean 的生命周期"></a>5.4 bean 的生命周期</h3><h3 id="5-5-引用外部属性文件"><a href="#5-5-引用外部属性文件" class="headerlink" title="5.5 引用外部属性文件"></a>5.5 引用外部属性文件</h3><blockquote>
 <p>当 bean 的配置信息逐渐增多时，查找和修改一些 bean 的配置信息就变得愈加困<br>难。这时可以将一部分信息提取到 bean 配置文件的外部，以 properties 格式的属<br>性文件保存起来，同时在 bean 的配置文件中引用 properties 属性文件中的内容，<br>从而实现一部分属性值在发生变化时仅修改 properties 属性文件即可。这种技术<br>多用于连接数据库的基本信息的配置。</p>
 </blockquote>
@@ -505,8 +506,9 @@ prop.driverClass=com.mysql.jdbc.Driver</code></pre>
 
 <p>③引入 context 名称空间</p>
 <blockquote>
-<p>在头文件中，引入该名称空间</p>
+<p>在头文件中，引入该名称空间<br>这个在eclipse中需要自行操作， IDEA中自动可用。</p>
 </blockquote>
+<p><img src="https://s1.ax1x.com/2020/08/12/ajAxT1.png" srcset="/img/loading.gif" alt="context名称空间"></p>
 <p>④指定 properties 属性文件的位置</p>
 <pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- Spring配置文件中 --&gt;</span>
 <span class="hljs-comment">&lt;!-- 指定properties属性文件的位置 --&gt;</span>
@@ -529,16 +531,77 @@ prop.driverClass=com.mysql.jdbc.Driver</code></pre>
 </blockquote>
 <p>②装配模式</p>
 <blockquote>
-<p>[1]根据 类型自动装配：将类型匹配的 bean 作为属性注入到另一个 bean 中。<br>若 IOC 容器中有多个与目标 bean 类型一致的 bean，Spring 将无法判定哪个 bean<br>最合适该属性，所以不能执行自动装配<br>[2]根据 名称自动装配：必须将目标 bean 的名称和属性名设置的完全相同<br>[3]通过构造器自动装配：当 bean 中存在多个构造器时，此种自动装配方式<br>将会很复杂。不推荐使用。</p>
+<p>[1]根据 类型自动装配：将类型匹配的 bean 作为属性注入到另一个 bean 中。 若 IOC 容器中有多个与目标 bean 类型一致的<br>bean，Spring 将无法判定哪个 bean 最合适该属性，所以不能执行自动装配</p>
+<p>[2]根据 名称自动装配：必须将目标 bean 的名称和属性名设置的完全相同</p>
+<p>[3]通过构造器自动装配：当 bean 中存在多个构造器时，此种自动装配方式 将会很复杂。不推荐使用。</p>
 </blockquote>
 <p>③选用建议</p>
 <blockquote>
 <p>相对于使用注解的方式实现的自动装配，在 XML 文档中进行的自动装配略显<br>笨拙，在项目中更多的使用<strong>注解</strong>的方式实现。</p>
 </blockquote>
 <hr>
-<h2 id="6-通过注解配置-bean"><a href="#6-通过注解配置-bean" class="headerlink" title="6 通过注解配置 bean"></a>6 通过注解配置 bean</h2><hr>
-<h2 id="7-泛型依赖注入"><a href="#7-泛型依赖注入" class="headerlink" title="7 泛型依赖注入"></a>7 泛型依赖注入</h2><hr>
-<h2 id="8-整合多个配置文件"><a href="#8-整合多个配置文件" class="headerlink" title="8 整合多个配置文件"></a>8 整合多个配置文件</h2>
+<h2 id="6-通过注解配置-bean"><a href="#6-通过注解配置-bean" class="headerlink" title="6 通过注解配置 bean"></a>6 通过注解配置 bean</h2><h3 id="6-1-概述"><a href="#6-1-概述" class="headerlink" title="6.1 概述"></a>6.1 概述</h3><blockquote>
+<p>相对于 XML 方式而言，通过注解的方式配置 bean 更加简洁和优雅，而且和 MVC<br>组件化开发的理念十分契合，是开发中常用的使用方式。</p>
+</blockquote>
+<h3 id="6-2-Spring相关注解"><a href="#6-2-Spring相关注解" class="headerlink" title="6.2 Spring相关注解"></a>6.2 Spring相关注解</h3><blockquote>
+<p>①普通组件：@Component 标识一个受 Spring IOC 容器管理的组件</p>
+<p>②持久化层组件：@Respository 标识一个受 Spring IOC 容器管理的持久化层组件</p>
+<p>③业务逻辑层组件：@Service 标识一个受 Spring IOC 容器管理的业务逻辑层组件</p>
+<p>④表述层控制器组件：@Controller 标识一个受 Spring IOC 容器管理的表述层控制器组件</p>
+<p>⑤组件命名规则 [1]默认情况：使用组件的简单类名首字母小写后得到的字符串作为 bean 的 id [2]使用组件注解的 value<br>属性指定 bean 的 id</p>
+</blockquote>
+<p>Note: 事实上 Spring 并没有能力识别一个组件到底是不是它所标记的类型。换言之，每一个注解在Spring看来是一个样，这些不同的注解，主要针对阅读程序的人来说。</p>
+<h3 id="6-3-Spring注解扫描"><a href="#6-3-Spring注解扫描" class="headerlink" title="6.3 Spring注解扫描"></a>6.3 Spring注解扫描</h3><p>组件被上述注解标识后还需要通过 Spring 进行扫描才能够侦测到。</p>
+<ol>
+<li><p>指定被扫描的 package</p>
+<pre><code class="hljs vhdl">&lt;<span class="hljs-keyword">context</span>:<span class="hljs-keyword">component</span>-scan base-<span class="hljs-keyword">package</span>=<span class="hljs-string">"com.krismile.component"</span>/&gt;</code></pre>
+</li>
+<li><p>细节说明</p>
+</li>
+</ol>
+<blockquote>
+<p>[1]base-package 属性指定一个需要扫描的基类包，Spring 容器将会扫描这个基 类包及其子包中的所有类。</p>
+<p>[2]当需要扫描多个包时可以使用逗号分隔。</p>
+<p>[3]包含与排除, <a href="context:include-filter">context:include-filter</a>子节点表示要包含的目标类,<br><a href="context:exclude-filter">context:exclude-filter</a>子节点表示要排除在外的目标类</p>
+<p>[4]如果仅希望扫描特定的类而非基包下的所有类，可使用 resource-pattern 属 性过滤特定的类，示例：</p>
+</blockquote>
+<pre><code class="hljs xml">context:component-scan
+    base-package="com.krismile.component"
+    <span class="hljs-comment">&lt;!--  --&gt;</span>
+    resource-pattern="autowire/*.class"/&gt;</code></pre>
+
+<p>Note: 如果是导入jar包的开发方式，需要额外导入 spring-aop-4.0.0.RELEASE.jar。</p>
+<h3 id="6-4-组件装配"><a href="#6-4-组件装配" class="headerlink" title="6.4 组件装配"></a>6.4 组件装配</h3><blockquote>
+<p>Controller 组件中往往需要用到 Service 组件的实例，Service 组件中往往需要用<br>到 Repository 组件的实例。Spring 可以通过注解的方式帮我们实现属性的装配。</p>
+</blockquote>
+<p>顺便一说： 在指定要扫描的包时，<a href="context:component-scan">context:component-scan</a> 元素会自动注册一个 bean的后置处理器：AutowiredAnnotationBeanPostProcessor的实例。该后置处理器可以自动装配标记了@Autowired、@Resource 或@Inject 注解的属性。</p>
+<ol>
+<li><p>@Autowired 注解</p>
+<blockquote>
+<p>根据类型实现自动装配 (先根据类型找， 再根据变量名即id找)<br>默认情况下，当 IOC 容器里存在多个类型兼容的 bean 时，Spring 会尝试匹<br>配 bean 的 id 值是否与变量名相同，如果相同则进行装配。如果 bean 的 id 值不相同，通过类型的自动装配将无法工作。</p>
+</blockquote>
+</li>
+<li><p>@Resource 注解</p>
+<blockquote>
+<p>@Resource 注解要求提供一个 bean 名称的属性，若该属性为空，则自动采用 标注处的变量或方法名作为 bean 的名称。</p>
+</blockquote>
+</li>
+<li><p>@Inject</p>
+<blockquote>
+<p>@Inject 和@Autowired 注解一样也是按类型注入匹配的 bean，但没有 reqired 属性。</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="7-整合多个配置文件"><a href="#7-整合多个配置文件" class="headerlink" title="7 整合多个配置文件"></a>7 整合多个配置文件</h2><ol>
+<li><p>Spring 允许通过<import>将多个配置文件引入到一个文件中，进行配置文件的集成。 这样在启动 Spring容器时，仅需要指定这个合并好的配置文件就可以。</p>
+</li>
+<li><p>import 元素的 resource 属性支持 Spring 的标准的路径资源<br><img src="https://s1.ax1x.com/2020/08/12/ajEV0A.png" srcset="/img/loading.gif" alt="整合外部文件"></p>
+</li>
+</ol>
+<h2 id="8-泛型依赖注入"><a href="#8-泛型依赖注入" class="headerlink" title="8 泛型依赖注入"></a>8 泛型依赖注入</h2><p>coding…</p>
+<hr>
+
             </div>
             <hr>
             <div>
@@ -564,6 +627,12 @@ prop.driverClass=com.mysql.jdbc.Driver</code></pre>
                 <div class="post-prevnext row">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Spring基础（三）AOP</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
