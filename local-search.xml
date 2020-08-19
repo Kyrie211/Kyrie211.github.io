@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>hexo admin plugin~</title>
+    <link href="/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/"/>
+    <url>/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h1 id="hexo-admin-plugin"><a href="#hexo-admin-plugin" class="headerlink" title="hexo admin plugin"></a>hexo admin plugin</h1><h2 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h2><pre><code class="hljs gauss"><span class="hljs-comment">// cnpm 是 npm 的国内镜像（淘宝），访问下载速度快很多</span>cnpm install --<span class="hljs-keyword">save</span> hexo-admin</code></pre><h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><pre><code class="hljs routeros">hexo<span class="hljs-built_in"> server </span>-d</code></pre><h2 id="访问在线编辑视窗"><a href="#访问在线编辑视窗" class="headerlink" title="访问在线编辑视窗"></a>访问在线编辑视窗</h2><pre><code class="hljs dts"><span class="hljs-comment">// 本地hexo博客地址 + admin即可</span><span class="hljs-symbol">http:</span><span class="hljs-comment">//localhost:4000/admin</span></code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>hexo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Spring基础（三）AOP</title>
     <link href="/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/"/>
     <url>/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/</url>
