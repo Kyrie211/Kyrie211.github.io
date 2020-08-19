@@ -654,30 +654,30 @@ prop.driverClass=com.mysql.jdbc.Driver</code></pre>
               <article class="comments" id="comments">
                 
                 
-  <div id="gitalk-container"></div>
+  <div id="vcomments"></div>
   <script type="text/javascript">
-    function loadGitalk() {
-      addScript('https://cdn.staticfile.org/blueimp-md5/2.13.0/js/md5.min.js');
-      addScript('https://cdn.staticfile.org/gitalk/1.6.2/gitalk.min.js', function () {
-        var gitalk = new Gitalk({
-          clientID: '5a641a260b6efed1b635',
-          clientSecret: '671d7a46901a3a8b3aaeb0d0ede5ce82126e45ed',
-          repo: 'hexo_blogCommentsStore',
-          owner: 'Kyrie211',
-          admin: ["Kyrie211"],
-          id: md5(location.pathname),
-          language: 'zh-CN',
-          labels: ["Gitalk"],
-          perPage: 10,
-          pagerDirection: 'last',
-          createIssueManually: true,
-          distractionFreeMode: false
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "MVkGijN87WgDRKJjUmH1msCA-gzGzoHsz",
+          app_key: "uKBCddXKHQPbIpnIjz7Odttl",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
         });
-        gitalk.render('gitalk-container');
       });
     }
-    waitElementVisible('gitalk-container', loadGitalk);
+    waitElementVisible('vcomments', loadValine);
   </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
 
 
               </article>
