@@ -240,13 +240,18 @@
   </div>
 </div>
 <div class="mt-5 markdown-body">
-  <h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><blockquote>
-<p>记录技术、生活等一些重要的事~</p>
-</blockquote>
+  <h2 id="关于本站"><a href="#关于本站" class="headerlink" title="关于本站"></a>关于本站</h2><span class="label label-info 初生"></span>
+
+<span class="label label-default 延续"></span>
+
+<span class="label label-warning 记录"></span>
+
 <hr>
-<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><blockquote>
-<p>默默无名的小子~ note：头像是本人</p>
-</blockquote>
+<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><span class="label label-primary 迷"></span>
+
+<span class="label label-success 积极"></span>
+
+<span class="label label-danger 网抑云"></span>
 
 </div>
 
@@ -316,16 +321,20 @@
   
 
   <footer class="mt-5">
-	<p id="hitokoto">:D 获取中...</p>
-	<script>
-	  fetch('https://v1.hitokoto.cn')
-		.then(response => response.json())
-		.then(data => {
-		  const hitokoto = document.getElementById('hitokoto')
-		  hitokoto.innerText = data.hitokoto
-		  })
-		  .catch(console.error)
-	</script>
+	<div class="text-center py-3">
+		<div>
+			<p id="hitokoto" align="center">:D 获取中...</p>
+			<script>
+			  fetch('https://v1.hitokoto.cn')
+				.then(response => response.json())
+				.then(data => {
+				  const hitokoto = document.getElementById('hitokoto')
+				  hitokoto.innerText = data.hitokoto
+				  })
+				  .catch(console.error)
+			</script>
+		</div>
+	</div>
 </footer>
 
 <!-- SCRIPTS -->
