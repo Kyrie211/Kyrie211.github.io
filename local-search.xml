@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>最近了解的算法/数据结构</title>
+    <link href="/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    <url>/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h1><h2 id="1-树状数组"><a href="#1-树状数组" class="headerlink" title="1.树状数组"></a>1.树状数组</h2><pre><code class="hljs angelscript"><span class="hljs-comment">// 具体的细节，后续补发</span><span class="hljs-keyword">class</span> <span class="hljs-symbol">NumArray</span> &#123;    <span class="hljs-built_in">int</span>[] c;    <span class="hljs-keyword">public</span> NumArray(<span class="hljs-built_in">int</span>[] nums) &#123;        <span class="hljs-built_in">int</span> n = nums.length;        c = new <span class="hljs-built_in">int</span>[n+<span class="hljs-number">1</span>];        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++) &#123;            update(i, nums[i]);        &#125;    &#125;    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> lowbit(<span class="hljs-built_in">int</span> x) &#123;        <span class="hljs-keyword">return</span> x &amp; (-x);    &#125;        <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> update(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> val) &#123;        x++;        <span class="hljs-built_in">int</span> n = c.length;        <span class="hljs-built_in">int</span> ov = query(x) - query(x<span class="hljs-number">-1</span>);        <span class="hljs-keyword">while</span>(x &lt; n) &#123;            c[x] += (val - ov);            x += lowbit(x);        &#125;    &#125;    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> query(<span class="hljs-built_in">int</span> x) &#123;        <span class="hljs-built_in">int</span> res = <span class="hljs-number">0</span>;        <span class="hljs-keyword">while</span>(x&gt;<span class="hljs-number">0</span>) &#123;            res += c[x];            x -= lowbit(x);        &#125;        <span class="hljs-keyword">return</span> res;    &#125;        <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> sumRange(<span class="hljs-built_in">int</span> i, <span class="hljs-built_in">int</span> j) &#123;        i++; j++;        <span class="hljs-keyword">return</span> query(j) - query(i<span class="hljs-number">-1</span>);    &#125;&#125;</code></pre><h2 id="2-前缀和"><a href="#2-前缀和" class="headerlink" title="2.前缀和"></a>2.前缀和</h2><pre><code class="hljs angelscript"><span class="hljs-comment">// 快速求出a数组中某一段的区间和</span><span class="hljs-comment">// sum [i, j] -&gt; prefix[j] - prefix[i-1]</span><span class="hljs-comment">// int n = a.length</span><span class="hljs-built_in">int</span>[] prefix = new <span class="hljs-built_in">int</span>[n+<span class="hljs-number">1</span>];<span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) &#123;prefix[i] = a[i<span class="hljs-number">-1</span>] + prefix[i<span class="hljs-number">-1</span>]&#125;</code></pre><h2 id="3-差分"><a href="#3-差分" class="headerlink" title="3.差分"></a>3.差分</h2><pre><code class="hljs css"><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[]</span>为一个<span class="hljs-selector-tag">A</span><span class="hljs-selector-attr">[]</span>差分数组, 其定义为<span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[i]</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[i-1]</span>具体的，后续补发。</code></pre><h2 id="4-字典树"><a href="#4-字典树" class="headerlink" title="4.字典树"></a>4.字典树</h2><pre><code class="hljs arduino"><span class="hljs-comment">/**</span><span class="hljs-comment">Trie字典树模板</span><span class="hljs-comment">*/</span><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Trie</span> &#123;</span><span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> &#123;</span><span class="hljs-keyword">char</span> c;<span class="hljs-keyword">boolean</span> <span class="hljs-built_in">end</span>;Map&lt;Character, Node&gt; children;<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Node</span><span class="hljs-params">(<span class="hljs-keyword">char</span> _c)</span> </span>&#123;c = _c;children = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();&#125;&#125;Node root;<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Trie</span><span class="hljs-params">()</span> </span>&#123;root = <span class="hljs-keyword">new</span> Node(<span class="hljs-string">'#'</span>);&#125;        <span class="hljs-comment">// 构建Trie树</span><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">String</span> s)</span> </span>&#123;Node p = root;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : s.toCharArray()) &#123;p.children.putIfAbsent(c, <span class="hljs-keyword">new</span> Node(c));p = p.children.<span class="hljs-built_in">get</span>(c);&#125;p.<span class="hljs-built_in">end</span> = <span class="hljs-literal">true</span>;&#125;        <span class="hljs-comment">// 查询是否存在匹配串</span><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">String</span> s)</span> </span>&#123;Node p = root;<span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : s.toCharArray()) &#123;Node son = p.children.<span class="hljs-built_in">get</span>(c);<span class="hljs-keyword">if</span>(son==null) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;p = son;&#125;<span class="hljs-keyword">return</span> p.<span class="hljs-built_in">end</span>;&#125;&#125;</code></pre>]]></content>
+    
+    
+    <categories>
+      
+      <category>总结</category>
+      
+      <category>模板</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>算法</tag>
+      
+      <tag>数据结构</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>hexo admin plugin~</title>
     <link href="/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/"/>
     <url>/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/</url>

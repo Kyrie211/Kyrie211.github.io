@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Kris">
   <meta name="keywords" content="">
-  <title>hexo admin plugin~ - Thinking</title>
+  <title>最近了解的算法/数据结构 - Thinking</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-18 01:07" pubdate>
-      2020年8月18日 凌晨
+    <time datetime="2020-08-20 21:25" pubdate>
+      2020年8月20日 晚上
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      63 字
+      353 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -233,32 +233,133 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">hexo admin plugin~</h1>
+            <h1 style="display: none">最近了解的算法/数据结构</h1>
             
               <p class="note note-info">
                 
-                  该博文更新于：2020年8月19日 早上
+                  该博文更新于：2020年8月20日 晚上
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="hexo-admin-plugin"><a href="#hexo-admin-plugin" class="headerlink" title="hexo admin plugin"></a>hexo admin plugin</h1><h2 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h2><pre><code class="hljs gauss"><span class="hljs-comment">// cnpm 是 npm 的国内镜像（淘宝），访问下载速度快很多</span>
-cnpm install --<span class="hljs-keyword">save</span> hexo-admin</code></pre>
+              <h1 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h1><h2 id="1-树状数组"><a href="#1-树状数组" class="headerlink" title="1.树状数组"></a>1.树状数组</h2><pre><code class="hljs angelscript"><span class="hljs-comment">// 具体的细节，后续补发</span>
+<span class="hljs-keyword">class</span> <span class="hljs-symbol">NumArray</span> &#123;
+    <span class="hljs-built_in">int</span>[] c;
 
-<h2 id="启动本地服务器"><a href="#启动本地服务器" class="headerlink" title="启动本地服务器"></a>启动本地服务器</h2><pre><code class="hljs routeros">hexo<span class="hljs-built_in"> server </span>-d</code></pre>
+    <span class="hljs-keyword">public</span> NumArray(<span class="hljs-built_in">int</span>[] nums) &#123;
+        <span class="hljs-built_in">int</span> n = nums.length;
+        c = new <span class="hljs-built_in">int</span>[n+<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++) &#123;
+            update(i, nums[i]);
+        &#125;
+    &#125;
 
-<h2 id="访问在线编辑视窗"><a href="#访问在线编辑视窗" class="headerlink" title="访问在线编辑视窗"></a>访问在线编辑视窗</h2><pre><code class="hljs dts"><span class="hljs-comment">// 本地hexo博客地址 + admin即可</span>
-<span class="hljs-symbol">http:</span><span class="hljs-comment">//localhost:4000/admin</span></code></pre>
+    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> lowbit(<span class="hljs-built_in">int</span> x) &#123;
+        <span class="hljs-keyword">return</span> x &amp; (-x);
+    &#125;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">void</span> update(<span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> val) &#123;
+        x++;
+        <span class="hljs-built_in">int</span> n = c.length;
+        <span class="hljs-built_in">int</span> ov = query(x) - query(x<span class="hljs-number">-1</span>);
+        <span class="hljs-keyword">while</span>(x &lt; n) &#123;
+            c[x] += (val - ov);
+            x += lowbit(x);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> query(<span class="hljs-built_in">int</span> x) &#123;
+        <span class="hljs-built_in">int</span> res = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(x&gt;<span class="hljs-number">0</span>) &#123;
+            res += c[x];
+            x -= lowbit(x);
+        &#125;
+        <span class="hljs-keyword">return</span> res;
+    &#125;
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> sumRange(<span class="hljs-built_in">int</span> i, <span class="hljs-built_in">int</span> j) &#123;
+        i++; j++;
+        <span class="hljs-keyword">return</span> query(j) - query(i<span class="hljs-number">-1</span>);
+    &#125;
+&#125;</code></pre>
+
+
+<h2 id="2-前缀和"><a href="#2-前缀和" class="headerlink" title="2.前缀和"></a>2.前缀和</h2><pre><code class="hljs angelscript"><span class="hljs-comment">// 快速求出a数组中某一段的区间和</span>
+<span class="hljs-comment">// sum [i, j] -&gt; prefix[j] - prefix[i-1]</span>
+<span class="hljs-comment">// int n = a.length</span>
+<span class="hljs-built_in">int</span>[] prefix = new <span class="hljs-built_in">int</span>[n+<span class="hljs-number">1</span>];
+<span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++) &#123;
+	prefix[i] = a[i<span class="hljs-number">-1</span>] + prefix[i<span class="hljs-number">-1</span>]
+&#125;</code></pre>
+
+
+<h2 id="3-差分"><a href="#3-差分" class="headerlink" title="3.差分"></a>3.差分</h2><pre><code class="hljs css"><span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[]</span>为一个<span class="hljs-selector-tag">A</span><span class="hljs-selector-attr">[]</span>差分数组, 其定义为<span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[i]</span> <span class="hljs-selector-tag">-</span> <span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[i-1]</span>
+具体的，后续补发。</code></pre>
+
+
+<h2 id="4-字典树"><a href="#4-字典树" class="headerlink" title="4.字典树"></a>4.字典树</h2><pre><code class="hljs arduino"><span class="hljs-comment">/**</span>
+<span class="hljs-comment">	Trie字典树模板</span>
+<span class="hljs-comment">*/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Trie</span> &#123;</span>
+	<span class="hljs-keyword">private</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> &#123;</span>
+		<span class="hljs-keyword">char</span> c;
+		<span class="hljs-keyword">boolean</span> <span class="hljs-built_in">end</span>;
+		Map&lt;Character, Node&gt; children;
+
+		<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Node</span><span class="hljs-params">(<span class="hljs-keyword">char</span> _c)</span> </span>&#123;
+			c = _c;
+			children = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+		&#125;
+	&#125;
+
+	Node root;
+
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Trie</span><span class="hljs-params">()</span> </span>&#123;
+		root = <span class="hljs-keyword">new</span> Node(<span class="hljs-string">'#'</span>);
+	&#125;
+
+        <span class="hljs-comment">// 构建Trie树</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">String</span> s)</span> </span>&#123;
+		Node p = root;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : s.toCharArray()) &#123;
+			p.children.putIfAbsent(c, <span class="hljs-keyword">new</span> Node(c));
+			p = p.children.<span class="hljs-built_in">get</span>(c);
+		&#125;
+		p.<span class="hljs-built_in">end</span> = <span class="hljs-literal">true</span>;
+	&#125;
+
+        <span class="hljs-comment">// 查询是否存在匹配串</span>
+	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">query</span><span class="hljs-params">(<span class="hljs-keyword">String</span> s)</span> </span>&#123;
+		Node p = root;
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">char</span> c : s.toCharArray()) &#123;
+			Node son = p.children.<span class="hljs-built_in">get</span>(c);
+			<span class="hljs-keyword">if</span>(son==null) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+			p = son;
+		&#125;
+		<span class="hljs-keyword">return</span> p.<span class="hljs-built_in">end</span>;
+	&#125;
+&#125;</code></pre>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%80%BB%E7%BB%93/">总结</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%80%BB%E7%BB%93/%E6%A8%A1%E6%9D%BF/">模板</a>
+                    
+                  </div>
+                
                 
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/hexo/">hexo</a>
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
                     
                   </div>
                 
@@ -271,18 +372,12 @@ cnpm install --<span class="hljs-keyword">save</span> hexo-admin</code></pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">最近了解的算法/数据结构</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/">
-                        <span class="hidden-mobile">Spring基础（三）AOP</span>
+                      <a href="/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/">
+                        <span class="hidden-mobile">hexo admin plugin~</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -485,7 +580,7 @@ cnpm install --<span class="hljs-keyword">save</span> hexo-admin</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "hexo admin plugin~&nbsp;",
+        "最近了解的算法/数据结构&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
