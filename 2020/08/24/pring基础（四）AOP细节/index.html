@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="Kris">
   <meta name="keywords" content="">
-  <title>归档 - Thinking</title>
+  <title>Spring基础（四）AOP细节 - Thinking</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +55,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -149,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://s1.ax1x.com/2020/08/11/aX0bJP.jpg') no-repeat center center;
+         style="background: url('https://s1.ax1x.com/2020/08/11/aX0qRf.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -157,6 +169,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-24 22:08" pubdate>
+      2020年8月24日 晚上
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      369 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -169,67 +223,229 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 9 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/08/24/pring%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%9B%EF%BC%89AOP%E7%BB%86%E8%8A%82/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（四）AOP细节</span>
-      <time style="float: right;">08-24</time>
-    </a>
-  
-    
-    <a href="/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">算法/数据结构模板</span>
-      <time style="float: right;">08-20</time>
-    </a>
-  
-    
-    <a href="/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">hexo admin plugin~</span>
-      <time style="float: right;">08-18</time>
-    </a>
-  
-    
-    <a href="/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（三）AOP</span>
-      <time style="float: right;">08-12</time>
-    </a>
-  
-    
-    <a href="/2020/08/07/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89IOC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（二）IOC</span>
-      <time style="float: right;">08-07</time>
-    </a>
-  
-    
-    <a href="/2020/08/05/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（一）概述</span>
-      <time style="float: right;">08-05</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">Spring基础（四）AOP细节</h1>
+            
+              <p class="note note-info">
+                
+                  该博文更新于：2020年8月24日 晚上
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="AOP细节"><a href="#AOP细节" class="headerlink" title="AOP细节"></a>AOP细节</h1><h2 id="1-切入点表达式"><a href="#1-切入点表达式" class="headerlink" title="1.切入点表达式"></a>1.切入点表达式</h2><h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><blockquote>
+<p>通过 表达式的方式定位 一个或多个具体的连接点。</p>
+</blockquote>
+<h4 id="语法细节"><a href="#语法细节" class="headerlink" title="语法细节"></a>语法细节</h4><p>①切入点表达式的语法格式</p>
+<pre><code class="hljs markdown">execution([<span class="hljs-string">权限修饰符</span>] [<span class="hljs-string">返回值类型</span>] [<span class="hljs-string">简单类名/全类名</span>] [<span class="hljs-string">方法名</span>](<span class="hljs-link">[参数列表]</span>))</code></pre>
 
+<p>②举例说明</p>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution(* com.atguigu.spring.ArithmeticCalculator.*(..))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>ArithmeticCalculator 接口中声明的所有方法。</td>
+</tr>
+<tr>
+<td></td>
+<td>第一个“*”代表任意修饰符及任意返回值</td>
+</tr>
+<tr>
+<td></td>
+<td>第二个“*”代表任意方法。</td>
+</tr>
+<tr>
+<td></td>
+<td>“..”匹配任意数量、任意类型的参数。</td>
+</tr>
+<tr>
+<td></td>
+<td>若目标类、接口与该切面类在同一个包中可以省略包名。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution(public * ArithmeticCalculator.*(..))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>ArithmeticCalculator 接口的所有公有方法</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution(public double ArithmeticCalculator.*(..))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>ArithmeticCalculator 接口中返回 double 类型数值的方法</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution(public double ArithmeticCalculator.*(double, ..))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>第一个参数为 double 类型的方法</td>
+</tr>
+<tr>
+<td></td>
+<td>“..” 匹配任意数量、任意类型的参数。</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution(public double ArithmeticCalculator.*(double, double))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>参数类型为 double，double 类型的方法</td>
+</tr>
+</tbody></table>
+<p><strong><em>特别的</em></strong></p>
+<blockquote>
+<p>在 AspectJ 中，切入点表达式可以通过 “&amp;&amp;”、“||”、“!”等操作符结合起来。下面用or代替||，这是由于markdown语法中含有|，我转义字符也没得用，就这样写下，意思就是这样啦</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>execution (* *.add(int,..)) or execution(* *.sub(int,..))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>含义</td>
+<td>任意类中第一个参数为 int 类型的 add 方法或 sub 方法</td>
+</tr>
+</tbody></table>
+<h4 id="切入点表达式应用到实际的切面类中"><a href="#切入点表达式应用到实际的切面类中" class="headerlink" title="切入点表达式应用到实际的切面类中"></a>切入点表达式应用到实际的切面类中</h4><p><img src="https://s1.ax1x.com/2020/08/24/dyUtgS.png" srcset="/img/loading.gif" alt="pic"></p>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SSM/">SSM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring/">Spring</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="hidden-mobile">算法/数据结构模板</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "MVkGijN87WgDRKJjUmH1msCA-gzGzoHsz",
+          app_key: "uKBCddXKHQPbIpnIjz7Odttl",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -333,6 +549,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -340,7 +581,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "Spring基础（四）AOP细节&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -355,6 +596,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -368,6 +626,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
