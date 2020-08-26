@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="Kris">
   <meta name="keywords" content="">
-  <title>页面走丢啦~ - Thinking</title>
+  <title>navigation - Thinking</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +55,7 @@
 
 
 <body>
-  <header style="height: 85vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -161,7 +173,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://s1.ax1x.com/2020/08/11/aXBCiq.png') no-repeat center center;
+         style="background: url('https://s1.ax1x.com/2020/08/11/aX01bj.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -181,16 +193,24 @@
 
   <main>
     
-      
+      <div class="container nopadding-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
 
-<script>
-  function redirect() {
-    location.href = "/";
-  }
+<div class="page-content">
+  
+</div>
 
-  //setTimeout(redirect, 3000)
-</script>
-
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
   </main>
 
@@ -301,7 +321,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "404&nbsp;",
+        "navigation&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -315,6 +335,23 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
 
 
 
