@@ -17,10 +17,22 @@
   <meta name="description" content="">
   <meta name="author" content="Kris">
   <meta name="keywords" content="">
-  <title>归档 - Thinking</title>
+  <title>SpringMVC（二） @RequestMapping  - Thinking</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -43,7 +55,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -149,7 +161,7 @@
 </nav>
 
     <div class="banner intro-2" id="background" parallax=true
-         style="background: url('https://s1.ax1x.com/2020/08/11/aX0bJP.jpg') no-repeat center center;
+         style="background: url('https://s1.ax1x.com/2020/08/11/aX0qRf.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -157,6 +169,48 @@
             <span class="h2" id="subtitle">
               
             </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-26 11:06" pubdate>
+      2020年8月26日 上午
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      360 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      4
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
 
             
           </div>
@@ -169,103 +223,183 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 14 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2020</p>
-    
-    <a href="/2020/08/26/SpringMVC%EF%BC%88%E4%BA%8C%EF%BC%89-RequestMapping/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SpringMVC（二） @RequestMapping </span>
-      <time style="float: right;">08-26</time>
-    </a>
-  
-    
-    <a href="/2020/08/26/SpringMVC%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">SpringMVC（一）概述</span>
-      <time style="float: right;">08-26</time>
-    </a>
-  
-    
-    <a href="/2020/08/25/Spring%E5%8F%B7%E5%A4%96-Spring-JdbcTemplate/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring号外 - Spring JdbcTemplate</span>
-      <time style="float: right;">08-25</time>
-    </a>
-  
-    
-    <a href="/2020/08/25/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E5%85%AD%EF%BC%89%E5%A3%B0%E6%98%8E%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（六）声明式事务</span>
-      <time style="float: right;">08-25</time>
-    </a>
-  
-    
-    <a href="/2020/08/25/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%94%EF%BC%89AOP-XML%E9%85%8D%E7%BD%AE/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（五）AOP-XML配置</span>
-      <time style="float: right;">08-25</time>
-    </a>
-  
-    
-    <a href="/2020/08/24/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E5%9B%9B%EF%BC%89AOP%E7%BB%86%E8%8A%82/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（四）AOP细节</span>
-      <time style="float: right;">08-24</time>
-    </a>
-  
-    
-    <a href="/2020/08/20/%E6%9C%80%E8%BF%91%E4%BA%86%E8%A7%A3%E7%9A%84%E7%AE%97%E6%B3%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">算法/数据结构模板</span>
-      <time style="float: right;">08-20</time>
-    </a>
-  
-    
-    <a href="/2020/08/18/hexo-amin-pluin%E6%93%8D%E4%BD%9C/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">hexo admin plugin~</span>
-      <time style="float: right;">08-18</time>
-    </a>
-  
-    
-    <a href="/2020/08/12/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%B8%89%EF%BC%89AOP/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（三）AOP</span>
-      <time style="float: right;">08-12</time>
-    </a>
-  
-    
-    <a href="/2020/08/07/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89IOC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Spring基础（二）IOC</span>
-      <time style="float: right;">08-07</time>
-    </a>
-  
-</div>
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/08/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/08/page/2/"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
-  
-  <script>
-    for (ele of document.getElementById("pagination").getElementsByTagName("a")) {
-      ele.href += '#board';
-    }
-  </script>
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto" id="post">
+            <!-- SEO header -->
+            <h1 style="display: none">SpringMVC（二） @RequestMapping </h1>
+            
+              <p class="note note-info">
+                
+                  该博文更新于：2020年8月26日 中午
+                
+              </p>
+            
+            <div class="markdown-body" id="post-body">
+              <h1 id="RequestMapping"><a href="#RequestMapping" class="headerlink" title="@RequestMapping"></a>@RequestMapping</h1><h2 id="1-RequestMapping-映射请求注解"><a href="#1-RequestMapping-映射请求注解" class="headerlink" title="1. @RequestMapping 映射请求注解"></a>1. @RequestMapping 映射请求注解</h2><ul>
+<li><code>SpringMVC 使用@RequestMapping 注解为控制器指定可以处理哪些 URL 请求</code></li>
+<li><code>在控制器的 类定义及方法定义处都可标注 @RequestMapping</code><blockquote>
+<p>标记在类上：提供初步的请求映射信息。相对于 WEB 应用的根目录。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>标记在方法上：提供进一步的细分映射信息。相对于标记在类上的 URL。</p>
+</blockquote>
+<ul>
+<li><p><code>若类上未标注 @RequestMapping，则方法处标记的 URL 相对于 WEB 应用的
+根目录</code></p>
+</li>
+<li><p>作用</p>
+</li>
+</ul>
+<p>DispatcherServlet 截获请求后，就通过控制器上 @RequestMapping 提供的<br>映射信息确定请求所对应的处理方法。</p>
+<hr>
+<h2 id="2-RequestMapping属性"><a href="#2-RequestMapping属性" class="headerlink" title="2. @RequestMapping属性"></a>2. @RequestMapping属性</h2><p> 参考文章 <a href="https://blog.csdn.net/qq_23090489/article/details/93322403" target="_blank" rel="noopener">@RequestMapping注解</a></p>
+<hr>
+<h2 id="3-RequestMapping支持-Ant-路径风格"><a href="#3-RequestMapping支持-Ant-路径风格" class="headerlink" title="3. @RequestMapping支持 Ant 路径风格"></a>3. @RequestMapping支持 Ant 路径风格</h2><ul>
+<li><code>Ant 持 风格资源地址支持 3 种匹配符</code></li>
+</ul>
+<pre><code class="hljs asciidoc">? ：匹配文件名中的一个字符
+<span class="hljs-bullet">* </span>：匹配文件名中的任意字符
+<span class="hljs-bullet">** </span>：** 匹配多层路径</code></pre>
 
+<ul>
+<li><code>Ant风格URL</code><pre><code class="hljs jboss-cli"><span class="hljs-string">/user/</span>*<span class="hljs-string">/createUser</span>
+匹配 <span class="hljs-string">/user/aaa/createUser</span>、<span class="hljs-string">/user/bbb/createUser</span> 等 URL
+<span class="hljs-string">/user/</span>**<span class="hljs-string">/createUser</span>
+匹配 <span class="hljs-string">/user/createUser</span>、<span class="hljs-string">/user/aaa/bbb/createUser</span> 等 URL
+<span class="hljs-string">/user/createUser</span>??
+匹配 <span class="hljs-string">/user/createUseraa</span>、<span class="hljs-string">/user/createUserbb</span> 等 URL</code></pre>
 
+</li>
+</ul>
+<h2 id="4-PathVariable注解"><a href="#4-PathVariable注解" class="headerlink" title="4. @PathVariable注解"></a>4. @PathVariable注解</h2><ul>
+<li><p><code>带占位符的 URL 是 是 Spring3.0 新增的功能</code></p>
+</li>
+<li><p><code>通过 @PathVariable 将 可以将 URL 中占位符参数绑定到控制器处理方法的入参中：</code></p>
+<pre><code class="hljs kotlin">URL 中的 &#123;xxx&#125; 占位符可以通过 <span class="hljs-meta">@PathVariable(<span class="hljs-meta-string">"xxx"</span>)</span> 绑定到操作方法的入参中。</code></pre>
+</li>
+<li><p>例子</p>
+<pre><code class="hljs kotlin"><span class="hljs-meta">@RequestMapping(value=<span class="hljs-meta-string">"/testPathVariable/&#123;id&#125;"</span>)</span>
+<span class="hljs-keyword">public</span> String testPathVariable(<span class="hljs-meta">@PathVariable(<span class="hljs-meta-string">"id"</span>)</span> Integer id)&#123;
+    System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">"testPathVariable...id="</span>+id);
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"success"</span>;
+&#125;</code></pre></li>
+</ul>
 
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Spring-MVC/">Spring MVC</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/SSM/">SSM</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Spring-MVC/">Spring MVC</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" target="_blank" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext row">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/08/26/SpringMVC%EF%BC%88%E4%B8%80%EF%BC%89%E6%A6%82%E8%BF%B0/">
+                        <span class="hidden-mobile">SpringMVC（一）概述</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    function loadValine() {
+      addScript('https://cdn.staticfile.org/valine/1.4.14/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "MVkGijN87WgDRKJjUmH1msCA-gzGzoHsz",
+          app_key: "uKBCddXKHQPbIpnIjz7Odttl",
+          placeholder: "留下你的足迹",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: true,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    }
+    waitElementVisible('vcomments', loadValine);
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://valine.js.org" target="_blank" rel="nofollow noopener noopener">comments
+      powered by Valine.</a></noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-md">
+    <div class="container custom post-content mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
     
   </main>
 
@@ -369,6 +503,31 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: '#post-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
 
 
   <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
@@ -376,7 +535,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "SpringMVC（二） @RequestMapping &nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
@@ -391,6 +550,23 @@
 
 
 
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+      icon: "§"
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
 
 
   <script  src="/js/local-search.js" ></script>
@@ -404,6 +580,20 @@
   </script>
 
 
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
 
 
 
