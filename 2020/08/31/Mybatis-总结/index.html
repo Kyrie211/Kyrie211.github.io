@@ -618,10 +618,16 @@ void updateAuthorValues(Author author);</code></pre>
 
 </li>
 </ul>
-<h4 id="问-和-的区别是什么？"><a href="#问-和-的区别是什么？" class="headerlink" title="问{}和${}的区别是什么？"></a>问{}和${}的区别是什么？</h4><p>#{}是预编译处理，${}是字符串替换。</p>
-<p>Mybatis在处理#{}时，会将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值；</p>
-<p>Mybatis在处理${}时，就是把${}替换成变量的值。</p>
-<p>使用#{}可以有效的防止SQL注入，提高系统安全性。</p>
+<h4 id="问-和-的区别是什么？"><a href="#问-和-的区别是什么？" class="headerlink" title="问{}和${}的区别是什么？"></a>问{}和${}的区别是什么？</h4><ul>
+<li><p>#{}是预编译处理，${}是字符串替换。</p>
+</li>
+<li><p>Mybatis在处理#{}时，会将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值；</p>
+</li>
+<li><p>Mybatis在处理${}时，就是把${}替换成变量的值。</p>
+</li>
+<li><p>使用#{}可以有效的防止SQL注入，提高系统安全性。</p>
+</li>
+</ul>
 <h2 id="MyBatis其他问题"><a href="#MyBatis其他问题" class="headerlink" title="MyBatis其他问题"></a>MyBatis其他问题</h2><h3 id="MyBatis与Hibernate有哪些不同？"><a href="#MyBatis与Hibernate有哪些不同？" class="headerlink" title="MyBatis与Hibernate有哪些不同？"></a>MyBatis与Hibernate有哪些不同？</h3><p>（1）Mybatis和hibernate不同，它不完全是一个ORM框架，因为MyBatis需要程序员自己编写Sql语句。</p>
 <p>（2）Mybatis直接编写原生态sql，可以严格控制sql执行性能，灵活度高，非常适合对关系数据模型要求不高的软件开发，因为这类软件需求变化频繁，一但需求变化要求迅速输出成果。但是灵活的前提是mybatis无法做到数据库无关性，如果需要实现支持多种数据库的软件，则需要自定义多套sql映射文件，工作量大。</p>
 <p>（3）Hibernate对象/关系映射能力强，数据库无关性好，对于关系模型要求高的软件，如果用hibernate开发可以节省很多代码，提高效率。</p>
