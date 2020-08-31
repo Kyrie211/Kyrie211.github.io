@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="Kris">
   <meta name="keywords" content="">
-  <title>Spring基础（一）概述 - Thinking</title>
+  <title>Mybatis 简介 - Thinking</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -174,8 +174,8 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-08-05 22:02" pubdate>
-      2020年8月5日 晚上
+    <time datetime="2020-08-31 09:05" pubdate>
+      2020年8月31日 上午
     </time>
   </div>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      850 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      9
        分钟
     </span>
   
@@ -233,93 +233,55 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">Spring基础（一）概述</h1>
+            <h1 style="display: none">Mybatis 简介</h1>
             
               <p class="note note-info">
                 
-                  该博文更新于：2020年8月25日 晚上
+                  该博文更新于：2020年8月31日 上午
                 
               </p>
             
             <div class="markdown-body" id="post-body">
-              <h1 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h1><h2 id="1-Spring-概述"><a href="#1-Spring-概述" class="headerlink" title="1 Spring 概述"></a>1 Spring 概述</h2><p>①Spring 是一个开源框架</p>
-<p>②Spring 为简化企业级开发而生，使用 Spring，JavaBean 就可以实现很多以前要靠 EJB<br>才能实现的功能。同样的功能，在 EJB 中要通过繁琐的配置和复杂的代码才能够实现，而在<br>Spring 中却非常的优雅和简洁。</p>
-<p>③Spring 是一个 <strong><em>IOC(DI)</em></strong>和 <strong><em>AOP</em></strong> 容器框架。(<strong><em>控制反转</em></strong> &amp;&amp; <strong><em>面向切面编程</em></strong>)</p>
-<p>④Spring 的优良特性</p>
-<blockquote>
-<p>[1] 非侵入式：基于 Spring 开发的应用中的对象可以不依赖于 Spring 的 API<br>[2] 依赖注入：DI——Dependency Injection，反转控制(IOC)最经典的实现。<br>[3] 面向切面编程：Aspect Oriented Programming——AOP<br>[4] 容器：Spring 是一个容器，因为它包含并且管理应用对象的生命周期<br>[5] 组件化：Spring 实现了使用简单的组件配置组合成一个复杂的应用。在 Spring 中可以使用 XML 和 Java 注解组合这些对象。<br>[6] 一站式：在 IOC 和 AOP 的基础上可以整合各种企业应用的开源框架和优秀的第<br>三方类库（实际上 Spring 自身也提供了表述层的 SpringMVC 和持久层的 Spring JDBC）。</p>
-</blockquote>
-<p>⑤Spring 目前的版本<br>缺图，待补</p>
-<p>⑥Spring 模块<br>缺图，待补</p>
-<h2 id="2-搭建-Spring-运行时环境"><a href="#2-搭建-Spring-运行时环境" class="headerlink" title="2 搭建 Spring 运行时环境"></a>2 搭建 Spring 运行时环境</h2><p>搭建Spring运行环境，有两种方式 — 大多数的环境搭建都如此。</p>
-<h3 id="2-1-导入jar包方式"><a href="#2-1-导入jar包方式" class="headerlink" title="2.1 导入jar包方式"></a>2.1 导入jar包方式</h3><p>①加入 JAR 包</p>
-<pre><code class="hljs css"><span class="hljs-selector-attr">[1]</span><span class="hljs-selector-tag">Spring</span> 自身 <span class="hljs-selector-tag">JAR</span> 包：<span class="hljs-selector-tag">spring-framework-4</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.RELEASE</span>\<span class="hljs-selector-tag">libs</span> 目录下
-<span class="hljs-selector-tag">spring-beans-4</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.RELEASE</span><span class="hljs-selector-class">.jar</span>
-<span class="hljs-selector-tag">spring-context-4</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.RELEASE</span><span class="hljs-selector-class">.jar</span>
-<span class="hljs-selector-tag">spring-core-4</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.RELEASE</span><span class="hljs-selector-class">.jar</span>
-<span class="hljs-selector-tag">spring-expression-4</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.0</span><span class="hljs-selector-class">.RELEASE</span><span class="hljs-selector-class">.jar</span>
-<span class="hljs-selector-attr">[2]</span><span class="hljs-selector-tag">commons-logging-1</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.jar</span></code></pre>
-
-<blockquote>
-<p>注意的是：你所需要导入的jar包需要根据实际需要来导入。换言之，你应该要了解Spring各个模块所需的jar包都是哪些。 Spring模块图见上文。</p>
-</blockquote>
-<p>②根据需要创建 Spring 配置文件</p>
-<h3 id="2-2-Maven导入依赖"><a href="#2-2-Maven导入依赖" class="headerlink" title="2.2 Maven导入依赖"></a>2.2 Maven导入依赖</h3><p>Maven是一种项目管理工具，具体做的事就是：从’本地仓库’ 或 ‘远程仓库’中导入所需要的依赖坐标。这里所说的’依赖坐标’就是相关jar包的坐标，只需导入坐标的好处是可以降低程序臃肿程度，jar包就只用一份就可。</p>
-<p>代码示例：</p>
-<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- 导入spring-core依赖 --&gt;</span>
-<span class="hljs-comment">&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-core --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-core<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>5.2.8.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+              <h1 id="Mybatis-简介"><a href="#Mybatis-简介" class="headerlink" title="Mybatis 简介"></a>Mybatis 简介</h1><hr>
+<h1 id="什么是-MyBatis-？"><a href="#什么是-MyBatis-？" class="headerlink" title="什么是 MyBatis ？"></a>什么是 MyBatis ？</h1><ul>
+<li>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。</li>
+<li>MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。</li>
+<li>MyBatis 可以对配置和原生Map使用简单的 XML 或注解，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。</li>
+</ul>
+<hr>
+<h1 id="MyBatis如何安装？"><a href="#MyBatis如何安装？" class="headerlink" title="MyBatis如何安装？"></a>MyBatis如何安装？</h1><ul>
+<li>要使用 MyBatis， 只需将 mybatis-x.x.x.jar 文件置于 classpath 中即可。</li>
+<li>如果使用 Maven 来构建项目，则需将下面的 dependency 代码置于 pom.xml 文件中：<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>  
+    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>mybatis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>  
+    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>x.x.x<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span></code></pre>
-
-<h2 id="3-Spring-HelloWorld"><a href="#3-Spring-HelloWorld" class="headerlink" title="3 Spring HelloWorld"></a>3 Spring HelloWorld</h2><p>一般的，学习一门编程语言，总是会以编写出HelloWorld代码来简单入门。<br>不失一般性，这里将以Spring HelloWorld方式来简单入门。</p>
-<blockquote>
-<p>①目标：使用 Spring 创建对象，为属性赋值<br>②创建 Student 类</p>
-</blockquote>
-<pre><code class="hljs angelscript"><span class="hljs-comment">// Student.java</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Student</span> &#123;
-    <span class="hljs-keyword">private</span> Integer studentId;
-    <span class="hljs-keyword">private</span> String stuName;
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> age;
-    <span class="hljs-comment">// 省略getter/setter/toString</span>
-&#125;</code></pre>
-
-<blockquote>
-<p>③创建 Spring 配置文件</p>
-</blockquote>
-<pre><code class="hljs xml"><span class="hljs-comment">&lt;!-- spring配置文件,这里命名为helloworld.xml --&gt;</span>
-<span class="hljs-comment">&lt;!-- 名字命名无强制要求，这里为了突出意图，以此命名 --&gt;</span>
-
-<span class="hljs-comment">&lt;!-- 使用bean元素定义一个由IOC容器创建的对象 --&gt;</span>
-<span class="hljs-comment">&lt;!-- class属性指定用于创建bean的全类名 --&gt;</span>
-<span class="hljs-comment">&lt;!-- id属性指定用于引用bean实例的标识 --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"student"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"com.atguigu.helloworld.bean.Student"</span>&gt;</span>
-    <span class="hljs-comment">&lt;!-- 使用property子元素为bean的属性赋值 --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"studentId"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"1001"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"stuName"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Tom2015"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"age"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"20"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span></code></pre>
-
-<blockquote>
-<p>④测试：通过 Spring 的 IOC 容器创建 Student 类实例</p>
-</blockquote>
-<pre><code class="hljs arduino"><span class="hljs-comment">// junit测试类 - 测试方法</span>
-@Test
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span>&#123;
-    <span class="hljs-comment">//1.创建IOC容器对象</span>
-    ApplicationContext iocContainer = <span class="hljs-keyword">new</span> ClassPathXmlApplicationContext(<span class="hljs-string">"helloworld.xml"</span>);
-    <span class="hljs-comment">//2.根据id值获取bean实例对象</span>
-    Student student = (Student) iocContainer.getBean(<span class="hljs-string">"student"</span>);
-    <span class="hljs-comment">//3.打印bean</span>
-    System.out.<span class="hljs-built_in">println</span>(student);
-&#125;</code></pre>
-
-<blockquote>
-<p>⑤验证：Spring 在创建 IOC 容器对象时，就已经完成了 bean 的创建和属性的赋值。</p>
-</blockquote>
-<h2 id="4-小结"><a href="#4-小结" class="headerlink" title="4 小结"></a>4 小结</h2><p>Spring框架相当于是一个容器，所有的类一旦被Spring容器管理起来，就不用我们去操心这些类的其一系列事情。<br>我们需要做的就是放心的将这些类交由Spring容器管理，然后舒舒服服的享受Spring带给我们的便利。</p>
+</li>
+</ul>
+<hr>
+<h1 id="MyBatis的功能架构"><a href="#MyBatis的功能架构" class="headerlink" title="MyBatis的功能架构"></a>MyBatis的功能架构</h1><p>Mybatis的功能架构可以分为三层：API接口层、数据处理层、基础支撑层</p>
+<ul>
+<li><code>API接口层：提供给外部使用的接口API，开发人员通过这些本地API来操纵数据库。接口层一接收到调用请求就会调用数据处理层来完成具体的数据处理。</code></li>
+<li><code>数据处理层：负责具体的SQL查找、SQL解析、SQL执行和执行结果映射处理等。它主要的目的是根据调用的请求完成一次数据库操作。</code></li>
+<li><code>基础支撑层：负责最基础的功能支撑，包括连接管理、事务管理、配置加载和缓存处理，这些都是共用的东西，将他们抽取出来作为最基础的组件。为上层的数据处理层提供最基础的支撑。</code></li>
+</ul>
+<hr>
+<h1 id="MyBatis的优缺点"><a href="#MyBatis的优缺点" class="headerlink" title="MyBatis的优缺点"></a>MyBatis的优缺点</h1><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>简单易学：本身就很小且简单。没有任何第三方依赖，最简单安装只要两个jar文件+配置几个sql映射文件易于学习，易于使用，通过文档和源代码，可以比较完全的掌握它的设计思路和实现。 </li>
+<li>灵活：mybatis不会对应用程序或者数据库的现有设计强加任何影响。 sql写在xml里，便于统一管理和优化。通过sql基本上可以实现我们不使用数据访问框架可以实现的所有功能，或许更多。 </li>
+<li>解除sql与程序代码的耦合：通过提供DAL层，将业务逻辑和数据访问逻辑分离，使系统的设计更清晰，更易维护，更易单元测试。sql和代码的分离，提高了可维护性。 </li>
+<li>提供映射标签，支持对象与数据库的orm字段关系映射 </li>
+<li>提供对象关系映射标签，支持对象关系组建维护 </li>
+<li>提供xml标签，支持编写动态sql。 </li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>编写SQL语句时工作量很大，尤其是字段多、关联表多时，更是如此。 </li>
+<li>SQL语句依赖于数据库，导致数据库移植性差，不能更换数据库。 </li>
+<li>框架还是比较简陋，功能尚有缺失，虽然简化了数据绑定代码，但是整个底层数据库查询实际还是要自己写的，工作量也比较大，而且不太容易适应快速数据库修改。 </li>
+<li>二级缓存机制不佳</li>
+</ul>
+<hr>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>Mybatis是目前主流的处于DAO层的框架，它虽然会有一些缺点，但目前来说，它会是一个你比较好的选择。</p>
 
             </div>
             <hr>
@@ -329,7 +291,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Spring/">Spring</a>
+                      <a class="hover-with-bg" href="/categories/Mybatis/">Mybatis</a>
                     
                   </div>
                 
@@ -337,11 +299,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
+                      <a class="hover-with-bg" href="/tags/Mybatis/">Mybatis</a>
+                    
                       <a class="hover-with-bg" href="/tags/SSM/">SSM</a>
                     
                       <a class="hover-with-bg" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a>
-                    
-                      <a class="hover-with-bg" href="/tags/Spring/">Spring</a>
                     
                   </div>
                 
@@ -354,9 +316,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/08/07/Spring%E5%9F%BA%E7%A1%80%EF%BC%88%E4%BA%8C%EF%BC%89IOC/">
+                      <a href="/2020/08/31/Mybatis-%E6%80%BB%E7%BB%93/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring基础（二）IOC</span>
+                        <span class="hidden-mobile">Mybatis 总结</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -364,8 +326,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/07/28/My-Test001/">
-                        <span class="hidden-mobile">My Test001</span>
+                      <a href="/2020/08/26/SpringMVC%EF%BC%88%E4%BA%8C%EF%BC%89-RequestMapping/">
+                        <span class="hidden-mobile">SpringMVC（二） @RequestMapping </span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -568,7 +530,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "Spring基础（一）概述&nbsp;",
+        "Mybatis 简介&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
